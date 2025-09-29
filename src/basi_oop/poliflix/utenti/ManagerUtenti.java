@@ -1,4 +1,4 @@
-package basi_oop.poliflix;
+package basi_oop.poliflix.utenti;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,9 +6,19 @@ import java.util.Scanner;
 
 public class ManagerUtenti {
     private List<Utente> utenti = new ArrayList<>();
+    private Utente utenteLoggato;
 
     public ManagerUtenti(List<Utente> utenti) {
         this.utenti = utenti;
+        this.utenteLoggato = new Utente(null, null);
+    }
+
+    public Utente getUtenteLoggato() {
+        return utenteLoggato;
+    }
+
+    public void setUtenteLoggato(Utente utenteLoggato) {
+        this.utenteLoggato = utenteLoggato;
     }
 
     public List<Utente> getUtenti() {
@@ -32,7 +42,7 @@ public class ManagerUtenti {
         this.utenti.add(new_utente);
     }
 
-    public Utente login() {
+    public void login() {
         Scanner scanner = new Scanner(System.in);
 
         Utente tentativo_login = new Utente(null, null);
@@ -45,11 +55,12 @@ public class ManagerUtenti {
         for (Utente u : this.utenti)
             if (u.equals(tentativo_login)) {
                 System.out.println("Login effettuato con successo!");
-                return u;
+                this.utenteLoggato = u;
+                return;
             }
 
         System.out.println("Username o password errati.");
-        return new Utente(null, null);
+        this.utenteLoggato = new Utente(null, null);
     }
 
 }

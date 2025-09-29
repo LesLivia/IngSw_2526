@@ -1,4 +1,4 @@
-package basi_oop.poliflix;
+package basi_oop.poliflix.utenti;
 
 public class Utente {
     private String username;

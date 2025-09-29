@@ -1,4 +1,4 @@
-package basi_oop.poliflix;
+package basi_oop.poliflix.serie;
 
 import java.io.IOException;
 import java.nio.file.Files;

@@ -1,4 +1,4 @@
-package basi_oop.poliflix;
+package basi_oop.poliflix.serie;
 
 public class Episodio {
     private String titolo;

@@ -1,4 +1,4 @@
-package basi_oop.poliflix;
+package basi_oop.poliflix.serie;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
