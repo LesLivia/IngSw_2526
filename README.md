@@ -33,5 +33,5 @@ Di seguito, la descrizione, package per package, degli argomenti trattati:
   2.2) Sottopacchetto: basi_oop.file
   - File principali:
     - [basi_oop.file.TestFile](src/basi_oop/file/TestFile.java) (main)
-      - Scrittura su file con PrintWriter (crea [output.txt](output.txt))
+      - Scrittura su file con PrintWriter
       - Lettura con tre approcci: BufferedReader, Scanner, Files.readAllLines
