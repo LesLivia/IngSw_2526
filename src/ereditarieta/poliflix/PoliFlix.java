@@ -13,7 +13,7 @@ public class PoliFlix {
         boolean running = true;
 
         ManagerUtenti managerUtenti = new ManagerUtenti(new ArrayList<>());
-        ManagerContenuti managerContenuti = new ManagerContenuti(ReaderContenuti.leggiDaCsv("./resources/contenuti.csv"));
+        ManagerContenuti managerContenuti = new ManagerContenuti(ReaderContenuti.leggiDaCsv("./resources/files/contenuti.csv"));
 
         System.out.println("--------------------------");
         System.out.println("Poliflix Warmup");
@@ -24,8 +24,8 @@ public class PoliFlix {
                 managerUtenti.benvenutoUtente();
 
                 System.out.println("Seleziona un'opzione:");
-                System.out.println("1. Elenco Serie Disponibili");
-                System.out.println("2. Guarda Serie");
+                System.out.println("1. Elenco Contenuti Disponibili");
+                System.out.println("2. Riproduci Contenuto");
                 System.out.println("3. Esci");
 
                 Scanner scanner = new Scanner(System.in);
@@ -36,7 +36,7 @@ public class PoliFlix {
                         managerContenuti.stampaInformazioni();
                         break;
                     case 2:
-                        System.out.println("Inserisci il nome della serie da guardare: ");
+                        System.out.println("Inserisci il titolo: ");
                         String nomeSerie = scanner.nextLine();
 
                         managerContenuti.riproduci(nomeSerie);

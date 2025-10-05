@@ -1,7 +1,9 @@
 Questo repository raccoglie gli esempi mostrati a lezione. 
 Di seguito, la descrizione, package per package, degli argomenti trattati:
 
-1) Package: warm_up
+<details>
+<summary><strong>1) Package: warm_up</strong></summary>
+
 - Obiettivo: ripassare le basi di Java e dell’I/O da console, strutture dati semplici e un primo mini‑esempio “PoliFlix”.
 - File principali:
   - [warm_up.Step1](src/warm_up/Step1.java) 
@@ -17,7 +19,11 @@ Di seguito, la descrizione, package per package, degli argomenti trattati:
     - Uso di liste parallele (username/password)
     - Menu a scelta con Scanner e gestione di uno “stato utente loggato”
 
-2) Package: basi_oop
+</details>
+
+<details>
+<summary><strong>2) Package: basi_oop</strong></summary>
+
 - Obiettivo: introdurre le basi della programmazione a oggetti (incapsulamento, oggetti e manager), lettura da file e una piccola app di esempio “PoliFlix”.
 
 <img src="resources/diagrams/PoliFlix_2.png" alt="Diagramma PoliFlix 2" width="400">
@@ -35,7 +41,7 @@ Di seguito, la descrizione, package per package, degli argomenti trattati:
       - Lettura e parsing da CSV (Serie.leggiSerieDaCsv su resources/series.csv)
   
   - Risorse d’esempio:
-     - [resources/series.csv](resources/series.csv) (file CSV letto da Serie.leggiSerieDaCsv)
+     - [resources/series.csv](resources/files/series.csv) (file CSV letto da Serie.leggiSerieDaCsv)
 
    2.2) Sottopacchetto: basi_oop.file
    - File principali:
@@ -43,7 +49,18 @@ Di seguito, la descrizione, package per package, degli argomenti trattati:
        - Scrittura su file con PrintWriter
        - Lettura con tre approcci: BufferedReader, Scanner, Files.readAllLines
 
-3) Package: ereditarieta
+  - Cosa mostra:
+    - Incapsulamento e oggetti di dominio (Utente, Serie, Episodio)
+    - Manager e composizione (PoliFlix + ManagerUtenti, ManagerSerie)
+    - Lettura e parsing da CSV (Serie.leggiSerieDaCsv su resources/series.csv)
+    - Menu testuale con stato utente (non loggato/loggato)
+    - Collezioni e iterazione su elenchi di oggetti
+
+</details>
+
+<details>
+<summary><strong>3) Package: ereditarieta</strong></summary>
+
 - Obiettivo: introdurre ereditarietà e polimorfismo applicati a PoliFlix; mostrare override dei metodi, upcasting e gestione uniforme di tipi diversi tramite una superclasse comune.
 
 <img src="resources/diagrams/PoliFlix_3.png" alt="Diagramma PoliFlix 3" width="400">
@@ -64,5 +81,7 @@ Di seguito, la descrizione, package per package, degli argomenti trattati:
     - Polimorfismo su ContenutoMultimediale.riproduci() e override dove necessario
     - Lettura da CSV unica ([ReaderContenuti.leggiDaCsv](src/ereditarieta/poliflix/contenuti/ReaderContenuti.java)) che istanzia il sottotipo in base alla prima colonna (Film/Documentario/Serie)
   - Risorse d’esempio:
-    - [resources/contenuti.csv](resources/contenuti.csv)
+    - [resources/contenuti.csv](resources/files/contenuti.csv)
     - Diagrammi: [resources/diagrams/PoliFlix_2.png](resources/diagrams/PoliFlix_2.png), [resources/diagrams/PoliFlix_3.png](resources/diagrams/PoliFlix_3.png)
+
+</details>

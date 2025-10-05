@@ -13,7 +13,7 @@ public class PoliFlix {
         boolean running = true;
 
         ManagerUtenti managerUtenti = new ManagerUtenti(new ArrayList<>());
-        ManagerSerie managerSerie = new ManagerSerie(Serie.leggiSerieDaCsv("./resources/series.csv"));
+        ManagerSerie managerSerie = new ManagerSerie(Serie.leggiSerieDaCsv("./resources/files/series.csv"));
 
         System.out.println("--------------------------");
         System.out.println("Poliflix Warmup");
