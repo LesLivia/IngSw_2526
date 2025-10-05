@@ -40,6 +40,10 @@ public class ManagerUtenti {
         new_utente.setPassword(scanner.nextLine());
 
         this.utenti.add(new_utente);
+
+        System.out.println("Registrato utente " +
+                this.utenti.getLast().getUsername() +
+                " con successo!");
     }
 
     public void login() {
@@ -61,6 +65,14 @@ public class ManagerUtenti {
 
         System.out.println("Username o password errati.");
         this.utenteLoggato = new Utente(null, null);
+    }
+
+    public boolean utenteLoggato() {
+        return this.utenteLoggato.exists();
+    }
+
+    public void benvenutoUtente() {
+        System.out.println("Bentornato " + this.utenteLoggato.getUsername() + "!");
     }
 
 }

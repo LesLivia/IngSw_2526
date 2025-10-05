@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class App {
+public class PoliFlix {
     public static void main(String[] args) throws IOException, InterruptedException {
         boolean running = true;
 
@@ -20,8 +20,8 @@ public class App {
         System.out.println("--------------------------");
 
         while (running) {
-            if (managerUtenti.getUtenteLoggato().exists()) {
-                System.out.println("\n\nBentornato " + managerUtenti.getUtenteLoggato().getUsername() + "!");
+            if (managerUtenti.utenteLoggato()) {
+                managerUtenti.benvenutoUtente();
 
                 System.out.println("Seleziona un'opzione:");
                 System.out.println("1. Elenco Serie Disponibili");
@@ -60,9 +60,6 @@ public class App {
                 switch (scelta) {
                     case 1:
                         managerUtenti.registraUtente();
-                        System.out.println("Registrato utente " +
-                                managerUtenti.getUtenti().getLast().getUsername() +
-                                " con successo!");
                         break;
                     case 2:
                         managerUtenti.login();

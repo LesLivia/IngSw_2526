@@ -1,14 +1,11 @@
 package ereditarieta.poliflix;
 
-import ereditarieta.poliflix.contenuti.ContenutoMultimediale;
-import ereditarieta.poliflix.contenuti.Film;
 import ereditarieta.poliflix.contenuti.ManagerContenuti;
 import ereditarieta.poliflix.contenuti.ReaderContenuti;
 import ereditarieta.poliflix.utenti.ManagerUtenti;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class PoliFlix {
@@ -18,18 +15,13 @@ public class PoliFlix {
         ManagerUtenti managerUtenti = new ManagerUtenti(new ArrayList<>());
         ManagerContenuti managerContenuti = new ManagerContenuti(ReaderContenuti.leggiDaCsv("./resources/contenuti.csv"));
 
-        ContenutoMultimediale c1 = new Film("", 2, "Azione", List.of());
-        managerContenuti.mostraAltro(c1);
-        Film c2 = new Film("", 2, "Azione", List.of());
-        managerContenuti.mostraAltro(c2);
-
         System.out.println("--------------------------");
         System.out.println("Poliflix Warmup");
         System.out.println("--------------------------");
 
         while (running) {
-            if (managerUtenti.getUtenteLoggato().exists()) {
-                System.out.println("\n\nBentornato " + managerUtenti.getUtenteLoggato().getUsername() + "!");
+            if (managerUtenti.utenteLoggato()) {
+                managerUtenti.benvenutoUtente();
 
                 System.out.println("Seleziona un'opzione:");
                 System.out.println("1. Elenco Serie Disponibili");
@@ -48,7 +40,6 @@ public class PoliFlix {
                         String nomeSerie = scanner.nextLine();
 
                         managerContenuti.riproduci(nomeSerie);
-
                         break;
                     case 3:
                         running = false;
@@ -68,9 +59,6 @@ public class PoliFlix {
                 switch (scelta) {
                     case 1:
                         managerUtenti.registraUtente();
-                        System.out.println("Registrato utente " +
-                                managerUtenti.getUtenti().getLast().getUsername() +
-                                " con successo!");
                         break;
                     case 2:
                         managerUtenti.login();
