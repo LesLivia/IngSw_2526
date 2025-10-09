@@ -1,6 +1,7 @@
 package oop_avanzato.poliflix.contenuti;
 
 import oop_avanzato.poliflix.utils.Logger;
+import oop_avanzato.poliflix.utils.PoliFlixException;
 
 import java.util.List;
 import java.util.Random;
@@ -8,7 +9,7 @@ import java.util.Random;
 public class ManagerContenuti implements Logger {
     private List<ContenutoMultimediale> contenuti;
 
-    private final String loggerName = "[ManagerContenuti]";
+    private final static String loggerName = "[ManagerContenuti]";
 
     public ManagerContenuti(List<ContenutoMultimediale> contenuti) {
         this.contenuti = contenuti;
@@ -25,12 +26,12 @@ public class ManagerContenuti implements Logger {
     public void stampaInformazioni() {
         int i = 1;
         for (ContenutoMultimediale s : this.contenuti) {
-            System.out.println(i + ". Titolo: " + s.getTitolo() + ", Durata: " + s.getDurata() + " secondi.");
+            log(loggerName, i + ". Titolo: " + s.getTitolo() + ", Durata: " + s.getDurata() + " secondi.");
             i++;
         }
     }
 
-    public void riproduci(String titolo) throws InterruptedException {
+    public void riproduci(String titolo) throws PoliFlixException {
         ContenutoMultimediale contenutoScelto = null;
         for (ContenutoMultimediale s : this.contenuti)
             if (s.getTitolo().equalsIgnoreCase(titolo))
@@ -40,10 +41,14 @@ public class ManagerContenuti implements Logger {
             return;
         }
 
-        log(loggerName, contenutoScelto.getPlayMessage());
-        contenutoScelto.riproduci();
-        log(loggerName, "Potrebbe anche piacerti:");
-        mostraAltro(contenutoScelto);
+        try {
+            log(loggerName, contenutoScelto.getPlayMessage());
+            contenutoScelto.riproduci();
+            log(loggerName, "Potrebbe anche piacerti:");
+            mostraAltro(contenutoScelto);
+        } catch (InterruptedException e) {
+            throw new PoliFlixException("Errore nella riproduzione del contenuto.");
+        }
     }
 
     public void mostraAltro(ContenutoMultimediale cm) {

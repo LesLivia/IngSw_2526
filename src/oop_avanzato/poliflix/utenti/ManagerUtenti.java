@@ -1,9 +1,9 @@
 package oop_avanzato.poliflix.utenti;
 
 import oop_avanzato.poliflix.utils.Logger;
+import oop_avanzato.poliflix.utils.PoliFlixException;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -11,9 +11,9 @@ public class ManagerUtenti implements Logger {
     private List<Utente> utenti;
     private Utente utenteLoggato;
 
-    String loggerName = "[ManagerUtenti]";
+    private final static String loggerName = "[ManagerUtenti]";
 
-    public ManagerUtenti() {
+    public ManagerUtenti() throws PoliFlixException {
         try {
             FileInputStream fis = new FileInputStream("./resources/files/users.txt");
             ObjectInputStream ois = new ObjectInputStream(fis);
@@ -23,8 +23,7 @@ public class ManagerUtenti implements Logger {
             ois.close();
             fis.close();
         } catch (IOException | ClassNotFoundException e) {
-            System.out.println("Errore durante la deserializzazione degli utenti.");
-            this.utenti = new ArrayList<>();
+            throw new PoliFlixException("Errore nella deserializzazione degli utenti.");
         }
 
         this.utenteLoggato = new Utente(null, null);
@@ -46,7 +45,7 @@ public class ManagerUtenti implements Logger {
         this.utenti = utenti;
     }
 
-    public void registraUtente() {
+    public void registraUtente() throws PoliFlixException {
         Scanner scanner = new Scanner(System.in);
 
         Utente new_utente = new Utente(null, null);
@@ -60,8 +59,7 @@ public class ManagerUtenti implements Logger {
         try {
             this.salvaUtentiSuFile();
         } catch (IOException e) {
-            System.out.println("Errore durante la serializzazione degli utenti.");
-            e.printStackTrace();
+            throw new PoliFlixException("Errore nella serializzazione degli utenti.");
         }
 
         log(loggerName, " Registrato utente " +
