@@ -1,14 +1,16 @@
-package ereditarieta.poliflix;
+package oop_avanzato.poliflix;
 
-import ereditarieta.poliflix.contenuti.ManagerContenuti;
-import ereditarieta.poliflix.contenuti.ReaderContenuti;
-import ereditarieta.poliflix.utenti.ManagerUtenti;
+import oop_avanzato.poliflix.contenuti.ManagerContenuti;
+import oop_avanzato.poliflix.contenuti.ReaderContenuti;
+import oop_avanzato.poliflix.utenti.ManagerUtenti;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class PoliFlix {
+    private static final String loggerName = "[PoliFlix]";
+
     public static void main(String[] args) throws IOException, InterruptedException {
         boolean running = true;
 
@@ -16,14 +18,14 @@ public class PoliFlix {
         ManagerContenuti managerContenuti = new ManagerContenuti(ReaderContenuti.leggiDaCsv("./resources/files/contenuti.csv"));
 
         System.out.println("--------------------------");
-        System.out.println("Poliflix Warmup");
+        System.out.println("Poliflix");
         System.out.println("--------------------------");
 
         while (running) {
             if (managerUtenti.utenteLoggato()) {
                 managerUtenti.benvenutoUtente();
 
-                System.out.println("Seleziona un'opzione:");
+                System.out.println(loggerName + " Seleziona un'opzione:");
                 System.out.println("1. Elenco Contenuti Disponibili");
                 System.out.println("2. Riproduci Contenuto");
                 System.out.println("3. Esci");
@@ -49,7 +51,7 @@ public class PoliFlix {
                 }
 
             } else {
-                System.out.println("Seleziona un'opzione:");
+                System.out.println(loggerName + " Seleziona un'opzione:");
                 System.out.println("1. Registra nuovo utente");
                 System.out.println("2. Effettua il login");
                 System.out.println("3. Esci");

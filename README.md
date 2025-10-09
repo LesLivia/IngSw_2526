@@ -67,19 +67,19 @@ Di seguito, la descrizione, package per package, degli argomenti trattati:
 
   3.1) Sottopacchetto: ereditarieta.poliflix
   - File principali:
-    - [ereditarieta.poliflix.PoliFlix](src/ereditarieta/poliflix/PoliFlix.java) (main)
+    - [new.poliflix.PoliFlix](src/oop_avanzato/poliflix/PoliFlix.java) (main)
       - Entry point: menù non loggato/loggato, integrazione con ManagerUtenti e ManagerContenuti
     - Contenuti (gerarchia):
-      - [ereditarieta.poliflix.contenuti.ContenutoMultimediale](src/ereditarieta/poliflix/contenuti/ContenutoMultimediale.java) (superclasse)
-      - [ereditarieta.poliflix.contenuti.Film](src/ereditarieta/poliflix/contenuti/Film.java), [ereditarieta.poliflix.contenuti.Documentario](src/ereditarieta/poliflix/contenuti/Documentario.java), [ereditarieta.poliflix.contenuti.Serie](src/ereditarieta/poliflix/contenuti/Serie.java), [ereditarieta.poliflix.contenuti.Episodio](src/ereditarieta/poliflix/contenuti/Episodio.java)
-      - [ereditarieta.poliflix.contenuti.ManagerContenuti](src/ereditarieta/poliflix/contenuti/ManagerContenuti.java)
-      - [ereditarieta.poliflix.contenuti.ReaderContenuti](src/ereditarieta/poliflix/contenuti/ReaderContenuti.java)
+      - [contenuti.new.poliflix.ContenutoMultimediale](src/oop_avanzato/poliflix/contenuti/ContenutoMultimediale.java) (superclasse)
+      - [contenuti.new.poliflix.Film](src/oop_avanzato/poliflix/contenuti/Film.java), [contenuti.new.poliflix.Documentario](src/oop_avanzato/poliflix/contenuti/Documentario.java), [contenuti.new.poliflix.Serie](src/oop_avanzato/poliflix/contenuti/Serie.java), [contenuti.new.poliflix.Episodio](src/oop_avanzato/poliflix/contenuti/Episodio.java)
+      - [contenuti.new.poliflix.ManagerContenuti](src/oop_avanzato/poliflix/contenuti/ManagerContenuti.java)
+      - [contenuti.new.poliflix.ReaderContenuti](src/oop_avanzato/poliflix/contenuti/ReaderContenuti.java)
     - Utenti:
-      - [ereditarieta.poliflix.utenti.ManagerUtenti](src/ereditarieta/poliflix/utenti/ManagerUtenti.java), [ereditarieta.poliflix.utenti.Utente](src/ereditarieta/poliflix/utenti/Utente.java)
+      - [utenti.new.poliflix.ManagerUtenti](src/oop_avanzato/poliflix/utenti/ManagerUtenti.java), [utenti.new.poliflix.Utente](src/oop_avanzato/poliflix/utenti/Utente.java)
   - Cosa mostra:
     - Una gerarchia di tipi con superclasse (ContenutoMultimediale) e sottoclassi (Film, Documentario, Serie, Episodio)
     - Polimorfismo su ContenutoMultimediale.riproduci() e override dove necessario
-    - Lettura da CSV unica ([ReaderContenuti.leggiDaCsv](src/ereditarieta/poliflix/contenuti/ReaderContenuti.java)) che istanzia il sottotipo in base alla prima colonna (Film/Documentario/Serie)
+    - Lettura da CSV unica ([ReaderContenuti.leggiDaCsv](src/oop_avanzato/poliflix/contenuti/ReaderContenuti.java)) che istanzia il sottotipo in base alla prima colonna (Film/Documentario/Serie)
   - Risorse d’esempio:
     - [resources/contenuti.csv](resources/files/contenuti.csv)
     - Diagrammi: [resources/diagrams/PoliFlix_2.png](resources/diagrams/PoliFlix_2.png), [resources/diagrams/PoliFlix_3.png](resources/diagrams/PoliFlix_3.png)
