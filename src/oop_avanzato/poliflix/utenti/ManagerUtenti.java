@@ -2,6 +2,8 @@ package oop_avanzato.poliflix.utenti;
 
 import oop_avanzato.poliflix.utils.Logger;
 
+import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -11,8 +13,20 @@ public class ManagerUtenti implements Logger {
 
     String loggerName = "[ManagerUtenti]";
 
-    public ManagerUtenti(List<Utente> utenti) {
-        this.utenti = utenti;
+    public ManagerUtenti() {
+        try {
+            FileInputStream fis = new FileInputStream("./resources/files/users.txt");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+
+            this.utenti = (List<Utente>) ois.readObject();
+
+            ois.close();
+            fis.close();
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("Errore durante la deserializzazione degli utenti.");
+            this.utenti = new ArrayList<>();
+        }
+
         this.utenteLoggato = new Utente(null, null);
     }
 
@@ -43,6 +57,12 @@ public class ManagerUtenti implements Logger {
         new_utente.setPassword(scanner.nextLine());
 
         this.utenti.add(new_utente);
+        try {
+            this.salvaUtentiSuFile();
+        } catch (IOException e) {
+            System.out.println("Errore durante la serializzazione degli utenti.");
+            e.printStackTrace();
+        }
 
         log(loggerName, " Registrato utente " +
                 this.utenti.getLast().getUsername() +
@@ -76,6 +96,15 @@ public class ManagerUtenti implements Logger {
 
     public void benvenutoUtente() {
         log(loggerName, "Bentornato " + this.utenteLoggato.getUsername() + "!");
+    }
+
+    public void salvaUtentiSuFile() throws IOException {
+        FileOutputStream fos = new FileOutputStream("./resources/files/users.txt");
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+        oos.writeObject(this.utenti);
+        oos.close();
+        fos.close();
     }
 
 }

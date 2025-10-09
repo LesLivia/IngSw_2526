@@ -1,6 +1,8 @@
 package oop_avanzato.poliflix.utenti;
 
-public class Utente {
+import java.io.Serializable;
+
+public class Utente implements Serializable {
     private String username;
     private String password;
 

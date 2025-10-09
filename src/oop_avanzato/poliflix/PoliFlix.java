@@ -14,7 +14,7 @@ public class PoliFlix {
     public static void main(String[] args) throws IOException, InterruptedException {
         boolean running = true;
 
-        ManagerUtenti managerUtenti = new ManagerUtenti(new ArrayList<>());
+        ManagerUtenti managerUtenti = new ManagerUtenti();
         ManagerContenuti managerContenuti = new ManagerContenuti(ReaderContenuti.leggiDaCsv("./resources/files/contenuti.csv"));
 
         System.out.println("--------------------------");
