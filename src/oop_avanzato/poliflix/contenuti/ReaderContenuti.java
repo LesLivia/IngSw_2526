@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class ReaderContenuti {
-
     public static List<ContenutoMultimediale> leggiDaCsv(String path) throws PoliFlixException {
         // legge tutte le righe nel file indicato
         try {
@@ -45,11 +44,9 @@ public final class ReaderContenuti {
                         throw new PoliFlixException("Tipo di contenuto non supportato.");
                 }
             }
-
             return contenuti;
         } catch (IOException e) {
             throw new PoliFlixException("Errore durante la lettura del file.");
         }
     }
-
 }

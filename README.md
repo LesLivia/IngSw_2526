@@ -85,3 +85,38 @@ Di seguito, la descrizione, package per package, degli argomenti trattati:
     - Diagrammi: [resources/diagrams/PoliFlix_2.png](resources/diagrams/PoliFlix_2.png), [resources/diagrams/PoliFlix_3.png](resources/diagrams/PoliFlix_3.png)
 
 </details>
+
+
+<details>
+<summary><strong>4) Package: oop_avanzato</strong></summary>
+
+- Obiettivo: mostrare concetti OOP avanzati applicati a PoliFlix: classi astratte e metodi final, interfacce e metodi default, overloading/override, eccezioni custom, serializzazione e lettura da CSV con istanziazione del sottotipo.
+
+<img src="resources/diagrams/PoliFlix_4.png" alt="Diagramma PoliFlix 3" width="400">
+
+  4.1) Sottopacchetto: oop_avanzato.poliflix
+  - File principali:
+    - [oop_avanzato.poliflix.PoliFlix](src/oop_avanzato/poliflix/PoliFlix.java) (main)
+      - Entry point: menù non loggato/loggato, integrazione con ManagerUtenti e ManagerContenuti
+    - Contenuti (gerarchia):
+      - [oop_avanzato.poliflix.contenuti.ContenutoMultimediale](src/oop_avanzato/poliflix/contenuti/ContenutoMultimediale.java) (superclasse astratta)
+      - [oop_avanzato.poliflix.contenuti.Film](src/oop_avanzato/poliflix/contenuti/Film.java), [oop_avanzato.poliflix.contenuti.Documentario](src/oop_avanzato/poliflix/contenuti/Documentario.java), [oop_avanzato.poliflix.contenuti.Serie](src/oop_avanzato/poliflix/contenuti/Serie.java), [oop_avanzato.poliflix.contenuti.Episodio](src/oop_avanzato/poliflix/contenuti/Episodio.java)
+      - [oop_avanzato.poliflix.contenuti.ManagerContenuti](src/oop_avanzato/poliflix/contenuti/ManagerContenuti.java)
+      - [oop_avanzato.poliflix.contenuti.ReaderContenuti](src/oop_avanzato/poliflix/contenuti/ReaderContenuti.java)
+    - Utenti:
+      - [oop_avanzato.poliflix.utenti.ManagerUtenti](src/oop_avanzato/poliflix/utenti/ManagerUtenti.java), [oop_avanzato.poliflix.utenti.Utente](src/oop_avanzato/poliflix/utenti/Utente.java)
+    - Utils:
+      - [oop_avanzato.poliflix.utils.Condivisibile](src/oop_avanzato/poliflix/utils/Condivisibile.java), [oop_avanzato.poliflix.utils.Logger](src/oop_avanzato/poliflix/utils/Logger.java), [oop_avanzato.poliflix.utils.PoliFlixException](src/oop_avanzato/poliflix/utils/PoliFlixException.java)
+
+  - Cosa mostra:
+    - Classe astratta (ContenutoMultimediale) con metodi final e override nelle sottoclassi (Film, Documentario, Serie, Episodio)
+    - Interfacce (Condivisibile, Logger) e metodi default; implementazioni nei modelli di dominio
+    - Serializzazione/Deserializzazione utenti su file ([resources/files/users.txt](resources/files/users.txt))
+    - Gestione errori tramite eccezione custom ([PoliFlixException](src/oop_avanzato/poliflix/utils/PoliFlixException.java)) e try/catch nel main
+
+  - Risorse d’esempio:
+    - [resources/files/contenuti.csv](resources/files/contenuti.csv)
+    - [resources/files/users.txt](resources/files/users.txt)
+    - Diagrammi: [resources/diagrams/PoliFlix_4.png](resources/diagrams/PoliFlix_4.png)
+
+</details>
