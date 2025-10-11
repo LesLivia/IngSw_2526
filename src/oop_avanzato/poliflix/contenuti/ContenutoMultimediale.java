@@ -1,6 +1,8 @@
 package oop_avanzato.poliflix.contenuti;
 
-public abstract class ContenutoMultimediale {
+import oop_avanzato.poliflix.utils.Condivisibile;
+
+public abstract class ContenutoMultimediale implements Condivisibile {
     protected String titolo;
     protected int durata;
 
@@ -14,19 +16,19 @@ public abstract class ContenutoMultimediale {
         this.durata = durata;
     }
 
-    public String getTitolo() {
+    public final String getTitolo() {
         return titolo;
     }
 
-    public void setTitolo(String titolo) {
+    public final void setTitolo(String titolo) {
         this.titolo = titolo;
     }
 
-    public int getDurata() {
+    public final int getDurata() {
         return durata;
     }
 
-    public void setDurata(int durata) {
+    public final void setDurata(int durata) {
         this.durata = durata;
     }
 

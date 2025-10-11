@@ -7,7 +7,7 @@ import java.io.*;
 import java.util.List;
 import java.util.Scanner;
 
-public class ManagerUtenti implements Logger {
+public final class ManagerUtenti implements Logger {
     private List<Utente> utenti;
     private Utente utenteLoggato;
 

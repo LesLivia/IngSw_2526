@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class Film extends ContenutoMultimediale {
+    private static final String formatoVideo = "4K";
     private String genere;
     private List<String> cast;
 
@@ -52,9 +53,13 @@ public class Film extends ContenutoMultimediale {
         return msg + msgCast;
     }
 
-
     @Override
     public void riproduci() throws InterruptedException {
         TimeUnit.SECONDS.sleep(this.getDurata());
+    }
+
+    @Override
+    public String generaLinkCondivisione() {
+        return "https://poliflix.it/watch?film=" + this.getTitolo().replace(" ", "%20");
     }
 }

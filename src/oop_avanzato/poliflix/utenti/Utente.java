@@ -1,8 +1,10 @@
 package oop_avanzato.poliflix.utenti;
 
+import oop_avanzato.poliflix.utils.Condivisibile;
+
 import java.io.Serializable;
 
-public class Utente implements Serializable {
+public class Utente implements Serializable, Condivisibile {
     private String username;
     private String password;
 
@@ -35,4 +37,8 @@ public class Utente implements Serializable {
         return this.getUsername() != null && this.getPassword() != null;
     }
 
+    @Override
+    public String generaLinkCondivisione() {
+        return "https://poliflix.it/user/" + username;
+    }
 }

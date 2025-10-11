@@ -8,7 +8,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReaderContenuti {
+public final class ReaderContenuti {
 
     public static List<ContenutoMultimediale> leggiDaCsv(String path) throws PoliFlixException {
         // legge tutte le righe nel file indicato

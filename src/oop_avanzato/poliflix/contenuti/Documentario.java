@@ -37,11 +37,17 @@ public class Documentario extends ContenutoMultimediale {
 
     @Override
     public String getPlayMessage() {
-        return "Riproducendo documentario " + this.titolo + "...";
+        return "Riproducendo documentario " + this.titolo + " di " +
+                this.regista + " su " + this.tema + "...";
     }
 
     @Override
     public void riproduci() throws InterruptedException {
         TimeUnit.SECONDS.sleep(this.getDurata());
+    }
+
+    @Override
+    public String generaLinkCondivisione() {
+        return "https://poliflix.it/doc?title=" + getTitolo().replace(" ", "%20");
     }
 }

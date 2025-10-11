@@ -6,7 +6,7 @@ import oop_avanzato.poliflix.utils.PoliFlixException;
 import java.util.List;
 import java.util.Random;
 
-public class ManagerContenuti implements Logger {
+public final class ManagerContenuti implements Logger {
     private List<ContenutoMultimediale> contenuti;
 
     private final static String loggerName = "[ManagerContenuti]";
