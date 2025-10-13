@@ -48,6 +48,6 @@ public class Documentario extends ContenutoMultimediale {
 
     @Override
     public String generaLinkCondivisione() {
-        return "https://poliflix.it/doc?title=" + getTitolo().replace(" ", "%20");
+        return "https://poliflix.it/share/doc?title=" + getTitolo().replace(" ", "%20");
     }
 }

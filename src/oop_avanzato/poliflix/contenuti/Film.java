@@ -60,6 +60,6 @@ public class Film extends ContenutoMultimediale {
 
     @Override
     public String generaLinkCondivisione() {
-        return "https://poliflix.it/watch?film=" + this.getTitolo().replace(" ", "%20");
+        return "https://poliflix.it/share/film?title=" + this.titolo.replace(" ", "%20");
     }
 }

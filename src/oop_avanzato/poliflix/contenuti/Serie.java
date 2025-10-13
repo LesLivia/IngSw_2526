@@ -55,6 +55,6 @@ public class Serie extends ContenutoMultimediale {
     @Override
     public String generaLinkCondivisione() {
         // Condivide la serie completa
-        return "https://poliflix.it/serie?title=" + getTitolo().replace(" ", "%20");
+        return "https://poliflix.it/share/serie?title=" + this.titolo.replace(" ", "%20");
     }
 }

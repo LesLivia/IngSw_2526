@@ -4,6 +4,7 @@ import oop_avanzato.poliflix.utils.Logger;
 import oop_avanzato.poliflix.utils.PoliFlixException;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -13,7 +14,7 @@ public final class ManagerUtenti implements Logger {
 
     private final static String loggerName = "[ManagerUtenti]";
 
-    public ManagerUtenti() throws PoliFlixException {
+    public ManagerUtenti() {
         try {
             FileInputStream fis = new FileInputStream("./resources/files/users.txt");
             ObjectInputStream ois = new ObjectInputStream(fis);
@@ -23,7 +24,7 @@ public final class ManagerUtenti implements Logger {
             ois.close();
             fis.close();
         } catch (IOException | ClassNotFoundException e) {
-            throw new PoliFlixException("Errore nella deserializzazione degli utenti.");
+            this.utenti = new ArrayList<>();
         }
 
         this.utenteLoggato = new Utente(null, null);

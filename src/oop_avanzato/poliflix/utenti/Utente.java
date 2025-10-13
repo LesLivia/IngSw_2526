@@ -39,6 +39,6 @@ public class Utente implements Serializable, Condivisibile {
 
     @Override
     public String generaLinkCondivisione() {
-        return "https://poliflix.it/user/" + username;
+        return "https://poliflix.it/share/user?username=" + username;
     }
 }

@@ -19,7 +19,6 @@ public class Episodio extends ContenutoMultimediale {
 
     @Override
     public String generaLinkCondivisione() {
-        // Condivide il singolo episodio (col titolo della serie incluso)
-        return "https://poliflix.it/serie" + "?ep=" + titolo.replace(" ", "%20");
+        return "https://poliflix.it/share/serie?ep=" + this.titolo.replace(" ", "%20");
     }
 }
