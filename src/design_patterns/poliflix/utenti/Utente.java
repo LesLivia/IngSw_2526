@@ -1,0 +1,44 @@
+package design_patterns.poliflix.utenti;
+
+import design_patterns.poliflix.utils.Condivisibile;
+
+import java.io.Serializable;
+
+public class Utente implements Serializable, Condivisibile {
+    private String username;
+    private String password;
+
+    public Utente(String u, String p) {
+        this.username = u;
+        this.password = p;
+    }
+
+    public String getUsername() {
+        return this.username;
+    }
+
+    public String getPassword() {
+        return this.password;
+    }
+
+    public void setUsername(String u) {
+        this.username = u;
+    }
+
+    public void setPassword(String p) {
+        this.password = p;
+    }
+
+    public boolean equals(Utente other) {
+        return this.getUsername().equals(other.getUsername()) && this.getPassword().equals(other.getPassword());
+    }
+
+    public boolean exists() {
+        return this.getUsername() != null && this.getPassword() != null;
+    }
+
+    @Override
+    public String generaLinkCondivisione() {
+        return "https://poliflix.it/share/user?username=" + username;
+    }
+}
