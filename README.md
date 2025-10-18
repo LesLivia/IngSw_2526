@@ -120,3 +120,31 @@ Di seguito, la descrizione, package per package, degli argomenti trattati:
     - Diagrammi: [resources/diagrams/PoliFlix_4.png](resources/diagrams/PoliFlix_4.png)
 
 </details>
+
+<details>
+<summary><strong>5) Package: design_patterns</strong></summary>
+
+- Obiettivo: applicare i principali Design Pattern all’app PoliFlix (Singleton, Factory, Decorator, Observer, Strategy).
+
+<img src="resources/diagrams/PoliFlix_5.png" alt="Diagramma PoliFlix 5" width="400">
+
+  5.1) Sottopacchetto: design_patterns.poliflix
+- Contenuti e Pattern:
+  - Singleton: [ManagerContenuti](src/design_patterns/poliflix/contenuti/ManagerContenuti.java), [ManagerUtenti](src/design_patterns/poliflix/utenti/ManagerUtenti.java)
+  - Factory (creazione oggetti contenuto): [ContenutiFactory](src/design_patterns/poliflix/contenuti/factory/ContenutiFactory.java)
+  - Decorator (funzionalità aggiuntive in riproduzione): [Riproducibile](src/design_patterns/poliflix/contenuti/decorator/Riproducibile.java), [ContenutoDecorator](src/design_patterns/poliflix/contenuti/decorator/ContenutoDecorator.java), [ConSottotitoli](src/design_patterns/poliflix/contenuti/decorator/ConSottotitoli.java), [ConDoppiaggio](src/design_patterns/poliflix/contenuti/decorator/ConDoppiaggio.java)
+  - Observer (notifiche): [Osservabile](src/design_patterns/poliflix/contenuti/observer/Osservabile.java), [Osservatore](src/design_patterns/poliflix/utenti/observer/Osservatore.java)
+  - Strategy (raccomandazioni): [StrategiaRaccomandazione](src/design_patterns/poliflix/contenuti/strategy/StrategiaRaccomandazione.java), [RaccomandazionePerTitolo](src/design_patterns/poliflix/contenuti/strategy/RaccomandazionePerTitolo.java), [RaccomandazionePerDurata](src/design_patterns/poliflix/contenuti/strategy/RaccomandazionePerDurata.java), [Raccomandatore](src/design_patterns/poliflix/contenuti/strategy/Raccomandatore.java)
+
+- Cosa mostra:
+  - Singleton per forzare l'esistenza di un'istanza unica per i due manager
+  - Factory per centralizzare la creazione dei contenuti a partire da parametri o dati
+  - Decorator per estendere il comportamento di riproduzione (es. sottotitoli, doppiaggio) senza modificare le classi esistenti
+  - Observer per notificare gli utenti/observer su eventi (es. nuovi contenuti o stati di riproduzione)
+  - Strategy per cambiare a runtime la logica di raccomandazione dei contenuti
+
+- Risorse d’esempio:
+  - [resources/files/contenuti.csv](resources/files/contenuti.csv)
+  - Diagrammi: [resources/diagrams/PoliFlix_5.png](resources/diagrams/PoliFlix_5.png)
+
+</details>

@@ -18,5 +18,4 @@ public class Raccomandatore {
     public List<ContenutoMultimediale> raccomanda(ContenutoMultimediale riferimento, List<ContenutoMultimediale> contenuti) {
         return this.strategia.raccomanda(riferimento, contenuti);
     }
-
 }
