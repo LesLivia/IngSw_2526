@@ -1,14 +1,19 @@
 package design_patterns.poliflix.contenuti;
 
+import design_patterns.poliflix.contenuti.observer.Osservabile;
+import design_patterns.poliflix.utenti.observer.Osservatore;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Serie extends ContenutoMultimediale {
+public class Serie extends ContenutoMultimediale implements Osservabile {
     private List<Episodio> episodi;
+    private List<Osservatore> subscribers;
 
     public Serie(String titolo) {
         super(titolo, 0);
         this.episodi = new ArrayList<>();
+        this.subscribers = new ArrayList<>();
     }
 
     public List<Episodio> getEpisodi() {
@@ -19,9 +24,22 @@ public class Serie extends ContenutoMultimediale {
         this.episodi = episodi;
     }
 
-    public void aggiungiEpisodio(Episodio episodio) {
+    @Override
+    public void aggiungiOsservatore(Osservatore o) {
+        this.subscribers.add(o);
+    }
+
+    @Override
+    public void notifica(String msg) {
+        for (Osservatore o : this.subscribers)
+            o.riceviNotifica(msg);
+    }
+
+    public void aggiungiEpisodio(Episodio episodio, boolean notifica) {
         this.episodi.add(episodio);
         this.setDurata(this.getDurata() + episodio.getDurata());
+        if (notifica)
+            this.notifica(" Aggiunto episodio " + this.getTitolo() + ": " + episodio.getTitolo() + "!");
     }
 
     @Override
@@ -47,7 +65,7 @@ public class Serie extends ContenutoMultimediale {
 
         Serie serie = new Serie(titolo);
         // aggiungo l'episodio di questa riga alla serie e aggiorno la durata
-        serie.aggiungiEpisodio(new Episodio(titoloEpisodio, durata));
+        serie.aggiungiEpisodio(new Episodio(titoloEpisodio, durata), false);
 
         return serie;
     }

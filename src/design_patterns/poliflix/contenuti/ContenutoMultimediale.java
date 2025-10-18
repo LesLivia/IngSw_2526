@@ -1,5 +1,6 @@
 package design_patterns.poliflix.contenuti;
 
+import design_patterns.poliflix.contenuti.decorator.Riproducibile;
 import design_patterns.poliflix.utils.Condivisibile;
 import design_patterns.poliflix.utils.Logger;
 

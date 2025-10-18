@@ -27,10 +27,17 @@ public class PoliFlix {
                     System.out.println(loggerName + " Seleziona un'opzione:");
                     System.out.println("1. Elenco Contenuti Disponibili");
                     System.out.println("2. Riproduci Contenuto");
-                    System.out.println("3. Esci");
+                    System.out.println("3. Sottoscriviti a un Contenuto");
+                    System.out.println("4. Logout");
+                    System.out.println("5. Esci");
 
                     Scanner scanner = new Scanner(System.in);
-                    int scelta = Integer.parseInt(scanner.nextLine());
+                    int scelta = -1;
+                    try {
+                        scelta = Integer.parseInt(scanner.nextLine());
+                    } catch (NumberFormatException e) {
+                        System.out.println("Scelta non valida!");
+                    }
 
                     switch (scelta) {
                         case 1:
@@ -43,6 +50,12 @@ public class PoliFlix {
                             managerContenuti.riproduci(nomeSerie);
                             break;
                         case 3:
+                            managerContenuti.sottoscrivi(managerUtenti.getUtenteLoggato());
+                            break;
+                        case 4:
+                            managerUtenti.logout();
+                            break;
+                        case 5:
                             running = false;
                             break;
                         default:
@@ -52,11 +65,16 @@ public class PoliFlix {
                 } else {
                     System.out.println(loggerName + " Seleziona un'opzione:");
                     System.out.println("1. Registra nuovo utente");
-                    System.out.println("2. Effettua il login");
+                    System.out.println("2. Login");
                     System.out.println("3. Esci");
 
                     Scanner scanner = new Scanner(System.in);
-                    int scelta = Integer.parseInt(scanner.nextLine());
+                    int scelta = -1;
+                    try {
+                        scelta = Integer.parseInt(scanner.nextLine());
+                    } catch (NumberFormatException e) {
+                        System.out.println("Scelta non valida!");
+                    }
 
                     switch (scelta) {
                         case 1:
@@ -71,6 +89,8 @@ public class PoliFlix {
                         default:
                     }
                 }
+
+                managerContenuti.aggiornaContenuti();
             }
         } catch (PoliFlixException e) {
             e.printMessage();

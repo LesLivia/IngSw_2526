@@ -96,6 +96,10 @@ public final class ManagerUtenti implements Logger {
         this.utenteLoggato = new Utente(null, null);
     }
 
+    public void logout() {
+        this.utenteLoggato = new Utente(null, null);
+    }
+
     public boolean utenteLoggato() {
         return this.utenteLoggato.exists();
     }

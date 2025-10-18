@@ -1,5 +1,10 @@
 package design_patterns.poliflix.contenuti;
 
+import design_patterns.poliflix.contenuti.decorator.ConDoppiaggio;
+import design_patterns.poliflix.contenuti.decorator.ConSottotitoli;
+import design_patterns.poliflix.contenuti.decorator.Riproducibile;
+import design_patterns.poliflix.contenuti.factory.ContenutiFactory;
+import design_patterns.poliflix.utenti.Utente;
 import design_patterns.poliflix.utils.Logger;
 import design_patterns.poliflix.utils.PoliFlixException;
 
@@ -11,6 +16,7 @@ import java.util.Scanner;
 public final class ManagerContenuti implements Logger {
     private static ManagerContenuti instance;
     private List<ContenutoMultimediale> contenuti;
+    private static final String pathCsv = "./resources/files/contenuti.csv";
 
     private final static String loggerName = "[ManagerContenuti]";
 
@@ -21,7 +27,7 @@ public final class ManagerContenuti implements Logger {
     public static ManagerContenuti getInstance() {
         if (instance == null)
             try {
-                instance = new ManagerContenuti(ContenutiFactory.leggiDaCsv("./resources/files/contenuti.csv"));
+                instance = new ManagerContenuti(ContenutiFactory.leggiDaCsv(pathCsv));
             } catch (PoliFlixException e) {
                 instance = new ManagerContenuti(new ArrayList<>());
             }
@@ -79,6 +85,33 @@ public final class ManagerContenuti implements Logger {
             index = randomGenerator.nextInt(this.contenuti.size());
 
         log(loggerName, this.contenuti.get(index).getTitolo());
+    }
+
+    public void sottoscrivi(Utente u) {
+        Scanner scanner = new Scanner(System.in);
+        log(loggerName, "Inserisci il titolo del contenuto da sottoscrivere:");
+        String titoloRichiesto = scanner.nextLine();
+
+        for (ContenutoMultimediale cm : this.contenuti)
+            if (cm.getTitolo().equalsIgnoreCase(titoloRichiesto))
+                if (!(cm instanceof Serie)) {
+                    log(loggerName, "Sottoscrizione possibile solo per le serie.");
+                    return;
+                } else {
+                    Serie s = (Serie) cm;
+                    s.aggiungiOsservatore(u);
+                    log(loggerName, "Sottoscrizione effettuata con successo.");
+                    return;
+                }
+        log(loggerName, "Titolo non trovato.");
+    }
+
+    public void aggiornaContenuti() {
+        try {
+            setContenuti(ContenutiFactory.aggiornaDaCsv(pathCsv, this.contenuti));
+        } catch (PoliFlixException e) {
+            log(loggerName, "Errore durante l'aggiornamento dei contenuti." + e.getMessage());
+        }
     }
 
 }

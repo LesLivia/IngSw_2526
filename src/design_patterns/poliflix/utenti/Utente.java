@@ -1,10 +1,11 @@
 package design_patterns.poliflix.utenti;
 
+import design_patterns.poliflix.utenti.observer.Osservatore;
 import design_patterns.poliflix.utils.Condivisibile;
 
 import java.io.Serializable;
 
-public class Utente implements Serializable, Condivisibile {
+public class Utente implements Serializable, Condivisibile, Osservatore {
     private String username;
     private String password;
 
@@ -40,5 +41,11 @@ public class Utente implements Serializable, Condivisibile {
     @Override
     public String generaLinkCondivisione() {
         return "https://poliflix.it/share/user?username=" + username;
+    }
+
+
+    @Override
+    public void riceviNotifica(String msg) {
+        System.out.println("(" + this.getUsername() + ") Ricevuta notifica: " + msg);
     }
 }

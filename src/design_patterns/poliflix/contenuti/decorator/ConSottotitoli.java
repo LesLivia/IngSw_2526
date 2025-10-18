@@ -1,4 +1,4 @@
-package design_patterns.poliflix.contenuti;
+package design_patterns.poliflix.contenuti.decorator;
 
 public class ConSottotitoli extends ContenutoDecorator {
     public ConSottotitoli(Riproducibile contenuto) {
