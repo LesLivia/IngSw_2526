@@ -4,24 +4,28 @@ import design_patterns.poliflix.contenuti.decorator.ConDoppiaggio;
 import design_patterns.poliflix.contenuti.decorator.ConSottotitoli;
 import design_patterns.poliflix.contenuti.decorator.Riproducibile;
 import design_patterns.poliflix.contenuti.factory.ContenutiFactory;
+import design_patterns.poliflix.contenuti.strategy.Raccomandatore;
+import design_patterns.poliflix.contenuti.strategy.RaccomandazionePerDurata;
+import design_patterns.poliflix.contenuti.strategy.RaccomandazionePerTitolo;
 import design_patterns.poliflix.utenti.Utente;
 import design_patterns.poliflix.utils.Logger;
 import design_patterns.poliflix.utils.PoliFlixException;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.Scanner;
 
 public final class ManagerContenuti implements Logger {
     private static ManagerContenuti instance;
     private List<ContenutoMultimediale> contenuti;
+    private Raccomandatore raccomandatore;
     private static final String pathCsv = "./resources/files/contenuti.csv";
 
     private final static String loggerName = "[ManagerContenuti]";
 
     private ManagerContenuti(List<ContenutoMultimediale> contenuti) {
         this.contenuti = contenuti;
+        this.raccomandatore = new Raccomandatore(new RaccomandazionePerTitolo());
     }
 
     public static ManagerContenuti getInstance() {
@@ -71,20 +75,17 @@ public final class ManagerContenuti implements Logger {
         try {
             log(loggerName, contenutoScelto.getPlayMessage());
             contenutoScelto.riproduci();
+            // Raccomandatore
+            ContenutoMultimediale riferimento = null;
+            for (ContenutoMultimediale s : this.contenuti)
+                if (s.getTitolo().equalsIgnoreCase(titolo))
+                    riferimento = s;
             log(loggerName, "Potrebbe anche piacerti:");
-            mostraAltro(contenutoScelto);
+            for (ContenutoMultimediale cm : this.raccomandatore.raccomanda(riferimento, this.contenuti))
+                System.out.println(cm.getTitolo());
         } catch (InterruptedException e) {
             throw new PoliFlixException("Errore nella riproduzione del contenuto.");
         }
-    }
-
-    public void mostraAltro(Riproducibile cm) {
-        Random randomGenerator = new Random();
-        int index = randomGenerator.nextInt(this.contenuti.size());
-        while (this.contenuti.get(index) == cm)
-            index = randomGenerator.nextInt(this.contenuti.size());
-
-        log(loggerName, this.contenuti.get(index).getTitolo());
     }
 
     public void sottoscrivi(Utente u) {
@@ -112,6 +113,18 @@ public final class ManagerContenuti implements Logger {
         } catch (PoliFlixException e) {
             log(loggerName, "Errore durante l'aggiornamento dei contenuti." + e.getMessage());
         }
+    }
+
+    public void cambiaStrategiaRaccomandazione() {
+        Scanner scanner = new Scanner(System.in);
+        log(loggerName, "Inserisci la nuova strategia di raccomandazione (D=per durata, T=per titolo):");
+        String scelta = scanner.nextLine();
+        if (scelta.equalsIgnoreCase("D"))
+            this.raccomandatore = new Raccomandatore(new RaccomandazionePerDurata());
+        else if (scelta.equalsIgnoreCase("T"))
+            this.raccomandatore = new Raccomandatore(new RaccomandazionePerTitolo());
+        else
+            log(loggerName, "Scelta non valida.");
     }
 
 }

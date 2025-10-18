@@ -28,8 +28,9 @@ public class PoliFlix {
                     System.out.println("1. Elenco Contenuti Disponibili");
                     System.out.println("2. Riproduci Contenuto");
                     System.out.println("3. Sottoscriviti a un Contenuto");
-                    System.out.println("4. Logout");
-                    System.out.println("5. Esci");
+                    System.out.println("4. Cambia modalità di raccomandazione");
+                    System.out.println("5. Logout");
+                    System.out.println("6. Esci");
 
                     Scanner scanner = new Scanner(System.in);
                     int scelta = -1;
@@ -53,9 +54,12 @@ public class PoliFlix {
                             managerContenuti.sottoscrivi(managerUtenti.getUtenteLoggato());
                             break;
                         case 4:
-                            managerUtenti.logout();
+                            managerContenuti.cambiaStrategiaRaccomandazione();
                             break;
                         case 5:
+                            managerUtenti.logout();
+                            break;
+                        case 6:
                             running = false;
                             break;
                         default:
