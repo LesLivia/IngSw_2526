@@ -148,3 +148,25 @@ Di seguito, la descrizione, package per package, degli argomenti trattati:
   - Diagrammi: [resources/diagrams/PoliFlix_5.png](resources/diagrams/PoliFlix_5.png)
 
 </details>
+
+
+<details>
+<summary><strong>6) Package: concorrente</strong></summary>
+
+- Obiettivo: introdurre la programmazione concorrente in PoliFlix
+
+<img src="resources/diagrams/PoliFlix_6.png" alt="Diagramma PoliFlix concorrente" width="400">
+
+  6.1) Sottopacchetto: concorrente.poliflix
+  - File principali:
+    - Monitor riproduzione/input: [concorrente.poliflix.contenuti.monitor.MonitorRiproduzione](src/concorrente/poliflix/contenuti/monitor/MonitorRiproduzione.java), [concorrente.poliflix.contenuti.monitor.InputRiproduzione](src/concorrente/poliflix/contenuti/monitor/InputRiproduzione.java)
+
+- Cosa mostra:
+  - Creazione di thread per la riproduzione dei contenuti e thread separato per l’input utente (pausa/riprendi/uscita)
+  - Sincronizzazione tramite monitor con metodi synchronized e wait/notifyAll per coordinare pausa/ripresa della riproduzione
+
+- Risorse d’esempio:
+  - [resources/files/contenuti.csv](resources/files/contenuti.csv)
+  - Diagramma: [resources/diagrams/PoliFlix_6.png](resources/diagrams/PoliFlix_6.png)
+
+</details>
