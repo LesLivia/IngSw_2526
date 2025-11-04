@@ -153,11 +153,28 @@ Di seguito, la descrizione, package per package, degli argomenti trattati:
 <details>
 <summary><strong>6) Package: concorrente</strong></summary>
 
+- Obiettivo: Introdurre nozioni relative alla programmazione concorrente, nello specifico creazione e gestione di thread e gestione thread-safe delle risorse condivise con esempi standalone e all'interno dell'app PoliFlix.
+
+  6.1) Sottopacchetto: concorrente.esempio_base
+  - File principali:
+    - [concorrente.esempio_base.Main](src/concorrente/esempio_base/Main.java) (main)
+    - [concorrente.esempio_base.EsempioThread](src/concorrente/esempio_base/EsempioThread.java)
+    - [concorrente.esempio_base.EsempioRunnable](src/concorrente/esempio_base/EsempioRunnable.java)
+    - [concorrente.esempio_base.EsempioMonitor](src/concorrente/esempio_base/EsempioMonitor.java)
+    - [concorrente.esempio_base.EsempioScrittore](src/concorrente/esempio_base/EsempioScrittore.java)
+    - [concorrente.esempio_base.EsempioLettore](src/concorrente/esempio_base/EsempioLettore.java)
+  - Cosa mostra:
+    - Differenze tra estendere Thread e implementare Runnable
+    - Avvio e sincronizzazione: start(), join(), sleep()
+    - Sincronizzazione con monitor: metodi synchronized, wait(), notifyAll()
+    - Esempio produttore/consumatore con lettore/scrittore e coda singola
+    - Gestione InterruptedException di base
+
+  6.2) Sottopacchetto: concorrente.poliflix
 - Obiettivo: introdurre la programmazione concorrente in PoliFlix
 
 <img src="resources/diagrams/PoliFlix_6.png" alt="Diagramma PoliFlix concorrente" width="400">
 
-  6.1) Sottopacchetto: concorrente.poliflix
   - File principali:
     - Monitor riproduzione/input: [concorrente.poliflix.contenuti.monitor.MonitorRiproduzione](src/concorrente/poliflix/contenuti/monitor/MonitorRiproduzione.java), [concorrente.poliflix.contenuti.monitor.InputRiproduzione](src/concorrente/poliflix/contenuti/monitor/InputRiproduzione.java)
 
@@ -166,7 +183,45 @@ Di seguito, la descrizione, package per package, degli argomenti trattati:
   - Sincronizzazione tramite monitor con metodi synchronized e wait/notifyAll per coordinare pausa/ripresa della riproduzione
 
 - Risorse d’esempio:
-  - [resources/files/contenuti.csv](resources/files/contenuti.csv)
   - Diagramma: [resources/diagrams/PoliFlix_6.png](resources/diagrams/PoliFlix_6.png)
+
+</details>
+
+
+<details>
+<summary><strong>7) Package: funzionale</strong></summary>
+
+- Obiettivo: introdurre i costrutti della programmazione funzionale (Stream/Collectors, Optional, method reference) con esempi standalone e l’app PoliFlix.
+
+  7.1) Sottopacchetto: funzionale.esempio_base
+  - File principali:
+    - [funzionale.esempio_base.EsempiStream](src/funzionale/esempio_base/EsempiStream.java)
+    - [funzionale.esempio_base.EsempiInterfacceFunzionali](src/funzionale/esempio_base/EsempiInterfacceFunzionali.java)
+  - Cosa mostra:
+    - Interfacce funzionali standard: `Predicate`, `Function`, `Supplier`, `Consumer` con lambda e method reference
+    - `Runnable` e `Thread` con lambda (creazione e `join`)
+    - `Comparator` con lambda su oggetti dominio (`Episodio`)
+    - Method reference 
+    - Interfaccia funzionale custom `@FunctionalInterface` [`OperazioneBinaria`](src/funzionale/esempio_base/OperazioneBinaria.java) e suo utilizzo con lambda
+    - Pipeline Stream
+    - Operazioni terminali
+    - Confronto con approccio imperativo
+
+  7.2) Sottopacchetto: funzionale.poliflix
+  - <img src="resources/diagrams/PoliFlix_7.png" alt="Diagramma PoliFlix funzionale" width="400">
+
+  - Dove sono usate funzionalità della programmazione funzionale (solo punti rilevanti):
+    - Ricerca e selezione contenuto in `ManagerContenuti.riproduci(String titolo)` ([file](src/funzionale/poliflix/contenuti/ManagerContenuti.java)):
+      - `stream()` → `filter` → `map` → `findFirst()` per ottenere un `Optional<Riproducibile>`.
+      - Uso di `Optional` per gestire l’assenza del contenuto senza `null` e rami annidati.
+    - Raccomandazioni in [`RaccomandazionePerTitolo`](src/funzionale/poliflix/contenuti/strategy/RaccomandazionePerTitolo.java) e [`RaccomandazionePerDurata`](src/funzionale/poliflix/contenuti/strategy/RaccomandazionePerDurata.java):
+      - Pipeline con `stream()` + `filter` + `limit` + `toList()` per produrre i suggerimenti.
+    - Avvio riproduzione con method reference in `ManagerContenuti.riproduci(String titolo)` ([file](src/funzionale/poliflix/contenuti/ManagerContenuti.java)):
+      - Creazione del `Runnable` via `contenutoDaRiprodurre::riproduci` (referenza a metodo) prima dell’avvio del thread.
+    - Verifica utente esistente in `ManagerUtenti.utenteEsiste(Utente)` ([file](src/funzionale/poliflix/utenti/ManagerUtenti.java)):
+      - `stream()` → `filter` → `findFirst()` → `isPresent()` per controllare le credenziali senza cicli e flag mutabili.
+
+- Risorse d’esempio:
+  - Diagrammi: [resources/diagrams/PoliFlix_7.png](resources/diagrams/PoliFlix_7.png)
 
 </details>

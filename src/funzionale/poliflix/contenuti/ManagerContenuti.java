@@ -1,19 +1,20 @@
-package concorrente.poliflix.contenuti;
+package funzionale.poliflix.contenuti;
 
-import concorrente.poliflix.contenuti.decorator.ConDoppiaggio;
-import concorrente.poliflix.contenuti.decorator.ConSottotitoli;
-import concorrente.poliflix.contenuti.decorator.Riproducibile;
-import concorrente.poliflix.contenuti.factory.ContenutiFactory;
-import concorrente.poliflix.contenuti.monitor.InputRiproduzione;
-import concorrente.poliflix.contenuti.strategy.Raccomandatore;
-import concorrente.poliflix.contenuti.strategy.RaccomandazionePerDurata;
-import concorrente.poliflix.contenuti.strategy.RaccomandazionePerTitolo;
-import concorrente.poliflix.utenti.Utente;
-import concorrente.poliflix.utils.Logger;
-import concorrente.poliflix.utils.PoliFlixException;
+import funzionale.poliflix.contenuti.decorator.ConDoppiaggio;
+import funzionale.poliflix.contenuti.decorator.ConSottotitoli;
+import funzionale.poliflix.contenuti.decorator.Riproducibile;
+import funzionale.poliflix.contenuti.factory.ContenutiFactory;
+import funzionale.poliflix.contenuti.monitor.InputRiproduzione;
+import funzionale.poliflix.contenuti.strategy.Raccomandatore;
+import funzionale.poliflix.contenuti.strategy.RaccomandazionePerDurata;
+import funzionale.poliflix.contenuti.strategy.RaccomandazionePerTitolo;
+import funzionale.poliflix.utenti.Utente;
+import funzionale.poliflix.utils.Logger;
+import funzionale.poliflix.utils.PoliFlixException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 public final class ManagerContenuti implements Logger {
@@ -56,11 +57,11 @@ public final class ManagerContenuti implements Logger {
     }
 
     public void riproduci(String titolo) throws PoliFlixException {
-        Riproducibile contenutoScelto = null;
-        for (ContenutoMultimediale s : this.contenuti)
-            if (s.getTitolo().equalsIgnoreCase(titolo))
-                contenutoScelto = s;
-        if (contenutoScelto == null) {
+        Optional<Riproducibile> contenutoScelto = this.contenuti.stream()
+                .filter(c -> c.getTitolo().equalsIgnoreCase(titolo))
+                .map(c -> (Riproducibile) c)
+                .findFirst();
+        if (contenutoScelto.isEmpty()) {
             log(loggerName, "Contenuto non trovato.");
             return;
         }
@@ -68,15 +69,15 @@ public final class ManagerContenuti implements Logger {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Vuoi attivare i sottotitoli? (S/N)");
         if (scanner.nextLine().equalsIgnoreCase("S"))
-            contenutoScelto = new ConSottotitoli(contenutoScelto);
+            contenutoScelto = Optional.of(new ConSottotitoli(contenutoScelto.get()));
         System.out.println("Vuoi attivare il doppiaggio? (S/N)");
         if (scanner.nextLine().equalsIgnoreCase("S"))
-            contenutoScelto = new ConDoppiaggio(contenutoScelto);
+            contenutoScelto = Optional.of(new ConDoppiaggio(contenutoScelto.get()));
 
         try {
-            log(loggerName, contenutoScelto.getPlayMessage());
-            final Riproducibile contenutoDaRiprodurre = contenutoScelto;
-            Runnable r = () -> contenutoDaRiprodurre.riproduci();
+            log(loggerName, contenutoScelto.get().getPlayMessage());
+            final Riproducibile contenutoDaRiprodurre = contenutoScelto.get();
+            Runnable r = contenutoDaRiprodurre::riproduci;
             Thread threadRiproduzione = new Thread(r);
             threadRiproduzione.start();
             InputRiproduzione input = new InputRiproduzione(contenutoDaRiprodurre.getMonitor());
@@ -85,13 +86,13 @@ public final class ManagerContenuti implements Logger {
             System.out.println("Riproduzione terminata. premere q per uscire.");
             input.join();
             // Raccomandatore
-            ContenutoMultimediale riferimento = null;
-            for (ContenutoMultimediale s : this.contenuti)
-                if (s.getTitolo().equalsIgnoreCase(titolo))
-                    riferimento = s;
+            ContenutoMultimediale riferimento = this.contenuti.stream()
+                    .filter(c -> c.getTitolo().equalsIgnoreCase(titolo))
+                    .findFirst()
+                    .get();
             log(loggerName, "Potrebbe anche piacerti:");
-            for (ContenutoMultimediale cm : this.raccomandatore.raccomanda(riferimento, this.contenuti))
-                System.out.println(cm.getTitolo());
+            this.raccomandatore.raccomanda(riferimento, this.contenuti)
+                    .forEach(c -> System.out.println(c.getTitolo()));
         } catch (InterruptedException e) {
             throw new PoliFlixException("Errore nella riproduzione del contenuto.");
         }

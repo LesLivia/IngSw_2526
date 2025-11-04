@@ -1,4 +1,4 @@
-package concorrente.poliflix.contenuti;
+package funzionale.poliflix.contenuti;
 
 import java.util.concurrent.TimeUnit;
 

@@ -1,6 +1,6 @@
-package concorrente.poliflix.contenuti.decorator;
+package funzionale.poliflix.contenuti.decorator;
 
-import concorrente.poliflix.contenuti.monitor.MonitorRiproduzione;
+import funzionale.poliflix.contenuti.monitor.MonitorRiproduzione;
 
 public abstract class Riproducibile {
     protected MonitorRiproduzione monitor;

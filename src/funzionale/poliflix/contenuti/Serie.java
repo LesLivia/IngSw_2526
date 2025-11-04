@@ -1,7 +1,7 @@
-package concorrente.poliflix.contenuti;
+package funzionale.poliflix.contenuti;
 
-import concorrente.poliflix.contenuti.observer.Osservabile;
-import concorrente.poliflix.utenti.observer.Osservatore;
+import funzionale.poliflix.contenuti.observer.Osservabile;
+import funzionale.poliflix.utenti.observer.Osservatore;
 
 import java.util.ArrayList;
 import java.util.List;
