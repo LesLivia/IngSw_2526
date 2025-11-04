@@ -198,9 +198,7 @@ Di seguito, la descrizione, package per package, degli argomenti trattati:
     - [funzionale.esempio_base.EsempiStream](src/funzionale/esempio_base/EsempiStream.java)
     - [funzionale.esempio_base.EsempiInterfacceFunzionali](src/funzionale/esempio_base/EsempiInterfacceFunzionali.java)
   - Cosa mostra:
-    - Interfacce funzionali standard: `Predicate`, `Function`, `Supplier`, `Consumer` con lambda e method reference
-    - `Runnable` e `Thread` con lambda (creazione e `join`)
-    - `Comparator` con lambda su oggetti dominio (`Episodio`)
+    - Interfacce funzionali standard: `Runnable`, `Comparator`, `Predicate`, `Function`, `Supplier`, `Consumer` con lambda e method reference
     - Method reference 
     - Interfaccia funzionale custom `@FunctionalInterface` [`OperazioneBinaria`](src/funzionale/esempio_base/OperazioneBinaria.java) e suo utilizzo con lambda
     - Pipeline Stream
