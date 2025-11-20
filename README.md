@@ -6,15 +6,15 @@ Di seguito, la descrizione, package per package, degli argomenti trattati:
 
 - Obiettivo: ripassare le basi di Java e dell’I/O da console, strutture dati semplici e un primo mini‑esempio “PoliFlix”.
 - File principali:
-  - [warm_up.Step1](src/warm_up/Step1.java) 
+  - [main.warm_up.Step1](src/main/warm_up/Step1.java) 
     - Stampa su console
     - Tipi primitivi (int, double, boolean)
     - Stringhe e lettura input con Scanner
     - Ciclo while e condizione di uscita (comando "esci")
-  - [warm_up.Step2](src/warm_up/Step2.java) 
+  - [main.warm_up.Step2](src/main/warm_up/Step2.java) 
     - Array e for “compatto” 
     - Liste 
-  - [warm_up.Step3_PoliFlix](src/warm_up/Step3_PoliFlix.java) 
+  - [main.warm_up.Step3_PoliFlix](src/main/warm_up/Step3_PoliFlix.java) 
     - Mini applicazione testuale: registrazione e login utenti
     - Uso di liste parallele (username/password)
     - Menu a scelta con Scanner e gestione di uno “stato utente loggato”
@@ -30,11 +30,11 @@ Di seguito, la descrizione, package per package, degli argomenti trattati:
 
   2.1) Sottopacchetto: basi_oop.poliflix
   - File principali:
-    - [basi_oop.poliflix.PoliFlix](src/basi_oop/poliflix/PoliFlix.java) (main)
+    - [poliflix.main.basi_oop.PoliFlix](src/main/basi_oop/poliflix/PoliFlix.java) (main)
       - Entry point dell’applicazione
       - Menu contestuale (non loggato/loggato)
       - Composizione con ManagerUtenti e ManagerSerie
-    - [basi_oop.poliflix.serie.Utente](src/basi_oop/poliflix/utenti/Utente.java), [basi_oop.poliflix.serie.Serie](src/basi_oop/poliflix/serie/Serie.java), [basi_oop.poliflix.serie.Episodio](src/basi_oop/poliflix/serie/Episodio.java)  (modello dominio)
+    - [basi_oop.poliflix.serie.Utente](src/main/basi_oop/poliflix/utenti/Utente.java), [serie.poliflix.main.basi_oop.Serie](src/main/basi_oop/poliflix/serie/Serie.java), [serie.poliflix.main.basi_oop.Episodio](src/main/basi_oop/poliflix/serie/Episodio.java)  (modello dominio)
   - Cosa mostra:
       - Incapsulamento e oggetti di dominio (Utente, Serie, Episodio)
       - Manager e composizione (PoliFlix + ManagerUtenti, ManagerSerie)
@@ -45,7 +45,7 @@ Di seguito, la descrizione, package per package, degli argomenti trattati:
 
    2.2) Sottopacchetto: basi_oop.file
    - File principali:
-     - [basi_oop.file.TestFile](src/basi_oop/file/TestFile.java) (main)
+     - [file.main.basi_oop.TestFile](src/main/basi_oop/file/TestFile.java) (main)
        - Scrittura su file con PrintWriter
        - Lettura con tre approcci: BufferedReader, Scanner, Files.readAllLines
 
@@ -67,19 +67,19 @@ Di seguito, la descrizione, package per package, degli argomenti trattati:
 
   3.1) Sottopacchetto: ereditarieta.poliflix
   - File principali:
-    - [new.poliflix.PoliFlix](src/oop_avanzato/poliflix/PoliFlix.java) (main)
+    - [new.poliflix.PoliFlix](src/main/oop_avanzato/poliflix/PoliFlix.java) (main)
       - Entry point: menù non loggato/loggato, integrazione con ManagerUtenti e ManagerContenuti
     - Contenuti (gerarchia):
-      - [contenuti.new.poliflix.ContenutoMultimediale](src/oop_avanzato/poliflix/contenuti/ContenutoMultimediale.java) (superclasse)
-      - [contenuti.new.poliflix.Film](src/oop_avanzato/poliflix/contenuti/Film.java), [contenuti.new.poliflix.Documentario](src/oop_avanzato/poliflix/contenuti/Documentario.java), [contenuti.new.poliflix.Serie](src/oop_avanzato/poliflix/contenuti/Serie.java), [contenuti.new.poliflix.Episodio](src/oop_avanzato/poliflix/contenuti/Episodio.java)
-      - [contenuti.new.poliflix.ManagerContenuti](src/oop_avanzato/poliflix/contenuti/ManagerContenuti.java)
-      - [contenuti.new.poliflix.ReaderContenuti](src/oop_avanzato/poliflix/contenuti/ReaderContenuti.java)
+      - [contenuti.new.poliflix.ContenutoMultimediale](src/main/oop_avanzato/poliflix/contenuti/ContenutoMultimediale.java) (superclasse)
+      - [contenuti.new.poliflix.Film](src/main/oop_avanzato/poliflix/contenuti/Film.java), [contenuti.new.poliflix.Documentario](src/main/oop_avanzato/poliflix/contenuti/Documentario.java), [contenuti.new.poliflix.Serie](src/main/oop_avanzato/poliflix/contenuti/Serie.java), [contenuti.new.poliflix.Episodio](src/main/oop_avanzato/poliflix/contenuti/Episodio.java)
+      - [contenuti.new.poliflix.ManagerContenuti](src/main/oop_avanzato/poliflix/contenuti/ManagerContenuti.java)
+      - [contenuti.new.poliflix.ReaderContenuti](src/main/oop_avanzato/poliflix/contenuti/ReaderContenuti.java)
     - Utenti:
-      - [utenti.new.poliflix.ManagerUtenti](src/oop_avanzato/poliflix/utenti/ManagerUtenti.java), [utenti.new.poliflix.Utente](src/oop_avanzato/poliflix/utenti/Utente.java)
+      - [utenti.new.poliflix.ManagerUtenti](src/main/oop_avanzato/poliflix/utenti/ManagerUtenti.java), [utenti.new.poliflix.Utente](src/main/oop_avanzato/poliflix/utenti/Utente.java)
   - Cosa mostra:
     - Una gerarchia di tipi con superclasse (ContenutoMultimediale) e sottoclassi (Film, Documentario, Serie, Episodio)
     - Polimorfismo su ContenutoMultimediale.riproduci() e override dove necessario
-    - Lettura da CSV unica ([ReaderContenuti.leggiDaCsv](src/oop_avanzato/poliflix/contenuti/ReaderContenuti.java)) che istanzia il sottotipo in base alla prima colonna (Film/Documentario/Serie)
+    - Lettura da CSV unica ([ReaderContenuti.leggiDaCsv](src/main/oop_avanzato/poliflix/contenuti/ReaderContenuti.java)) che istanzia il sottotipo in base alla prima colonna (Film/Documentario/Serie)
   - Risorse d’esempio:
     - [resources/contenuti.csv](resources/files/contenuti.csv)
     - Diagrammi: [resources/diagrams/PoliFlix_2.png](resources/diagrams/PoliFlix_2.png), [resources/diagrams/PoliFlix_3.png](resources/diagrams/PoliFlix_3.png)
@@ -96,23 +96,23 @@ Di seguito, la descrizione, package per package, degli argomenti trattati:
 
   4.1) Sottopacchetto: oop_avanzato.poliflix
   - File principali:
-    - [oop_avanzato.poliflix.PoliFlix](src/oop_avanzato/poliflix/PoliFlix.java) (main)
+    - [main.oop_avanzato.poliflix.PoliFlix](src/main/oop_avanzato/poliflix/PoliFlix.java) (main)
       - Entry point: menù non loggato/loggato, integrazione con ManagerUtenti e ManagerContenuti
     - Contenuti (gerarchia):
-      - [oop_avanzato.poliflix.contenuti.ContenutoMultimediale](src/oop_avanzato/poliflix/contenuti/ContenutoMultimediale.java) (superclasse astratta)
-      - [oop_avanzato.poliflix.contenuti.Film](src/oop_avanzato/poliflix/contenuti/Film.java), [oop_avanzato.poliflix.contenuti.Documentario](src/oop_avanzato/poliflix/contenuti/Documentario.java), [oop_avanzato.poliflix.contenuti.Serie](src/oop_avanzato/poliflix/contenuti/Serie.java), [oop_avanzato.poliflix.contenuti.Episodio](src/oop_avanzato/poliflix/contenuti/Episodio.java)
-      - [oop_avanzato.poliflix.contenuti.ManagerContenuti](src/oop_avanzato/poliflix/contenuti/ManagerContenuti.java)
-      - [oop_avanzato.poliflix.contenuti.ReaderContenuti](src/oop_avanzato/poliflix/contenuti/ReaderContenuti.java)
+      - [contenuti.main.oop_avanzato.poliflix.ContenutoMultimediale](src/main/oop_avanzato/poliflix/contenuti/ContenutoMultimediale.java) (superclasse astratta)
+      - [contenuti.main.oop_avanzato.poliflix.Film](src/main/oop_avanzato/poliflix/contenuti/Film.java), [contenuti.main.oop_avanzato.poliflix.Documentario](src/main/oop_avanzato/poliflix/contenuti/Documentario.java), [contenuti.main.oop_avanzato.poliflix.Serie](src/main/oop_avanzato/poliflix/contenuti/Serie.java), [contenuti.main.oop_avanzato.poliflix.Episodio](src/main/oop_avanzato/poliflix/contenuti/Episodio.java)
+      - [contenuti.main.oop_avanzato.poliflix.ManagerContenuti](src/main/oop_avanzato/poliflix/contenuti/ManagerContenuti.java)
+      - [contenuti.main.oop_avanzato.poliflix.ReaderContenuti](src/main/oop_avanzato/poliflix/contenuti/ReaderContenuti.java)
     - Utenti:
-      - [oop_avanzato.poliflix.utenti.ManagerUtenti](src/oop_avanzato/poliflix/utenti/ManagerUtenti.java), [oop_avanzato.poliflix.utenti.Utente](src/oop_avanzato/poliflix/utenti/Utente.java)
+      - [utenti.main.oop_avanzato.poliflix.ManagerUtenti](src/main/oop_avanzato/poliflix/utenti/ManagerUtenti.java), [utenti.main.oop_avanzato.poliflix.Utente](src/main/oop_avanzato/poliflix/utenti/Utente.java)
     - Utils:
-      - [oop_avanzato.poliflix.utils.Condivisibile](src/oop_avanzato/poliflix/utils/Condivisibile.java), [oop_avanzato.poliflix.utils.Logger](src/oop_avanzato/poliflix/utils/Logger.java), [oop_avanzato.poliflix.utils.PoliFlixException](src/oop_avanzato/poliflix/utils/PoliFlixException.java)
+      - [utils.main.oop_avanzato.poliflix.Condivisibile](src/main/oop_avanzato/poliflix/utils/Condivisibile.java), [utils.main.oop_avanzato.poliflix.Logger](src/main/oop_avanzato/poliflix/utils/Logger.java), [utils.main.oop_avanzato.poliflix.PoliFlixException](src/main/oop_avanzato/poliflix/utils/PoliFlixException.java)
 
   - Cosa mostra:
     - Classe astratta (ContenutoMultimediale) con metodi final e override nelle sottoclassi (Film, Documentario, Serie, Episodio)
     - Interfacce (Condivisibile, Logger) e metodi default; implementazioni nei modelli di dominio
     - Serializzazione/Deserializzazione utenti su file ([resources/files/users.txt](resources/files/users.txt))
-    - Gestione errori tramite eccezione custom ([PoliFlixException](src/oop_avanzato/poliflix/utils/PoliFlixException.java)) e try/catch nel main
+    - Gestione errori tramite eccezione custom ([PoliFlixException](src/main/oop_avanzato/poliflix/utils/PoliFlixException.java)) e try/catch nel main
 
   - Risorse d’esempio:
     - [resources/files/contenuti.csv](resources/files/contenuti.csv)
@@ -130,11 +130,11 @@ Di seguito, la descrizione, package per package, degli argomenti trattati:
 
   5.1) Sottopacchetto: design_patterns.poliflix
 - Contenuti e Pattern:
-  - Singleton: [ManagerContenuti](src/design_patterns/poliflix/contenuti/ManagerContenuti.java), [ManagerUtenti](src/design_patterns/poliflix/utenti/ManagerUtenti.java)
-  - Factory (creazione oggetti contenuto): [ContenutiFactory](src/design_patterns/poliflix/contenuti/factory/ContenutiFactory.java)
-  - Decorator (funzionalità aggiuntive in riproduzione): [Riproducibile](src/design_patterns/poliflix/contenuti/decorator/Riproducibile.java), [ContenutoDecorator](src/design_patterns/poliflix/contenuti/decorator/ContenutoDecorator.java), [ConSottotitoli](src/design_patterns/poliflix/contenuti/decorator/ConSottotitoli.java), [ConDoppiaggio](src/design_patterns/poliflix/contenuti/decorator/ConDoppiaggio.java)
-  - Observer (notifiche): [Osservabile](src/design_patterns/poliflix/contenuti/observer/Osservabile.java), [Osservatore](src/design_patterns/poliflix/utenti/observer/Osservatore.java)
-  - Strategy (raccomandazioni): [StrategiaRaccomandazione](src/design_patterns/poliflix/contenuti/strategy/StrategiaRaccomandazione.java), [RaccomandazionePerTitolo](src/design_patterns/poliflix/contenuti/strategy/RaccomandazionePerTitolo.java), [RaccomandazionePerDurata](src/design_patterns/poliflix/contenuti/strategy/RaccomandazionePerDurata.java), [Raccomandatore](src/design_patterns/poliflix/contenuti/strategy/Raccomandatore.java)
+  - Singleton: [ManagerContenuti](src/main/design_patterns/poliflix/contenuti/ManagerContenuti.java), [ManagerUtenti](src/main/design_patterns/poliflix/utenti/ManagerUtenti.java)
+  - Factory (creazione oggetti contenuto): [ContenutiFactory](src/main/design_patterns/poliflix/contenuti/factory/ContenutiFactory.java)
+  - Decorator (funzionalità aggiuntive in riproduzione): [Riproducibile](src/main/design_patterns/poliflix/contenuti/decorator/Riproducibile.java), [ContenutoDecorator](src/main/design_patterns/poliflix/contenuti/decorator/ContenutoDecorator.java), [ConSottotitoli](src/main/design_patterns/poliflix/contenuti/decorator/ConSottotitoli.java), [ConDoppiaggio](src/main/design_patterns/poliflix/contenuti/decorator/ConDoppiaggio.java)
+  - Observer (notifiche): [Osservabile](src/main/design_patterns/poliflix/contenuti/observer/Osservabile.java), [Osservatore](src/main/design_patterns/poliflix/utenti/observer/Osservatore.java)
+  - Strategy (raccomandazioni): [StrategiaRaccomandazione](src/main/design_patterns/poliflix/contenuti/strategy/StrategiaRaccomandazione.java), [RaccomandazionePerTitolo](src/main/design_patterns/poliflix/contenuti/strategy/RaccomandazionePerTitolo.java), [RaccomandazionePerDurata](src/main/design_patterns/poliflix/contenuti/strategy/RaccomandazionePerDurata.java), [Raccomandatore](src/main/design_patterns/poliflix/contenuti/strategy/Raccomandatore.java)
 
 - Cosa mostra:
   - Singleton per forzare l'esistenza di un'istanza unica per i due manager
@@ -157,12 +157,12 @@ Di seguito, la descrizione, package per package, degli argomenti trattati:
 
   6.1) Sottopacchetto: concorrente.esempio_base
   - File principali:
-    - [concorrente.esempio_base.Main](src/concorrente/esempio_base/Main.java) (main)
-    - [concorrente.esempio_base.EsempioThread](src/concorrente/esempio_base/EsempioThread.java)
-    - [concorrente.esempio_base.EsempioRunnable](src/concorrente/esempio_base/EsempioRunnable.java)
-    - [concorrente.esempio_base.EsempioMonitor](src/concorrente/esempio_base/EsempioMonitor.java)
-    - [concorrente.esempio_base.EsempioScrittore](src/concorrente/esempio_base/EsempioScrittore.java)
-    - [concorrente.esempio_base.EsempioLettore](src/concorrente/esempio_base/EsempioLettore.java)
+    - [esempio_base.main.concorrente.Main](src/main/concorrente/esempio_base/Main.java) (main)
+    - [esempio_base.main.concorrente.EsempioThread](src/main/concorrente/esempio_base/EsempioThread.java)
+    - [esempio_base.main.concorrente.EsempioRunnable](src/main/concorrente/esempio_base/EsempioRunnable.java)
+    - [esempio_base.main.concorrente.EsempioMonitor](src/main/concorrente/esempio_base/EsempioMonitor.java)
+    - [esempio_base.main.concorrente.EsempioScrittore](src/main/concorrente/esempio_base/EsempioScrittore.java)
+    - [esempio_base.main.concorrente.EsempioLettore](src/main/concorrente/esempio_base/EsempioLettore.java)
   - Cosa mostra:
     - Differenze tra estendere Thread e implementare Runnable
     - Avvio e sincronizzazione: start(), join(), sleep()
@@ -176,7 +176,7 @@ Di seguito, la descrizione, package per package, degli argomenti trattati:
 <img src="resources/diagrams/PoliFlix_6.png" alt="Diagramma PoliFlix concorrente" width="400">
 
   - File principali:
-    - Monitor riproduzione/input: [concorrente.poliflix.contenuti.monitor.MonitorRiproduzione](src/concorrente/poliflix/contenuti/monitor/MonitorRiproduzione.java), [concorrente.poliflix.contenuti.monitor.InputRiproduzione](src/concorrente/poliflix/contenuti/monitor/InputRiproduzione.java)
+    - Monitor riproduzione/input: [monitor.contenuti.poliflix.main.concorrente.MonitorRiproduzione](src/main/concorrente/poliflix/contenuti/monitor/MonitorRiproduzione.java), [monitor.contenuti.poliflix.main.concorrente.InputRiproduzione](src/main/concorrente/poliflix/contenuti/monitor/InputRiproduzione.java)
 
 - Cosa mostra:
   - Creazione di thread per la riproduzione dei contenuti e thread separato per l’input utente (pausa/riprendi/uscita)
@@ -195,12 +195,12 @@ Di seguito, la descrizione, package per package, degli argomenti trattati:
 
   7.1) Sottopacchetto: funzionale.esempio_base
   - File principali:
-    - [funzionale.esempio_base.EsempiStream](src/funzionale/esempio_base/EsempiStream.java)
-    - [funzionale.esempio_base.EsempiInterfacceFunzionali](src/funzionale/esempio_base/EsempiInterfacceFunzionali.java)
+    - [esempio_base.main.funzionale.EsempiStream](src/main/funzionale/esempio_base/EsempiStream.java)
+    - [esempio_base.main.funzionale.EsempiInterfacceFunzionali](src/main/funzionale/esempio_base/EsempiInterfacceFunzionali.java)
   - Cosa mostra:
     - Interfacce funzionali standard: `Runnable`, `Comparator`, `Predicate`, `Function`, `Supplier`, `Consumer` con lambda e method reference
     - Method reference 
-    - Interfaccia funzionale custom `@FunctionalInterface` [`OperazioneBinaria`](src/funzionale/esempio_base/OperazioneBinaria.java) e suo utilizzo con lambda
+    - Interfaccia funzionale custom `@FunctionalInterface` [`OperazioneBinaria`](src/main/funzionale/esempio_base/OperazioneBinaria.java) e suo utilizzo con lambda
     - Pipeline Stream
     - Operazioni terminali
     - Confronto con approccio imperativo
@@ -209,14 +209,14 @@ Di seguito, la descrizione, package per package, degli argomenti trattati:
   - <img src="resources/diagrams/PoliFlix_7.png" alt="Diagramma PoliFlix funzionale" width="400">
 
   - Dove sono usate funzionalità della programmazione funzionale (solo punti rilevanti):
-    - Ricerca e selezione contenuto in `ManagerContenuti.riproduci(String titolo)` ([file](src/funzionale/poliflix/contenuti/ManagerContenuti.java)):
+    - Ricerca e selezione contenuto in `ManagerContenuti.riproduci(String titolo)` ([file](src/main/funzionale/poliflix/contenuti/ManagerContenuti.java)):
       - `stream()` → `filter` → `map` → `findFirst()` per ottenere un `Optional<Riproducibile>`.
       - Uso di `Optional` per gestire l’assenza del contenuto senza `null` e rami annidati.
-    - Raccomandazioni in [`RaccomandazionePerTitolo`](src/funzionale/poliflix/contenuti/strategy/RaccomandazionePerTitolo.java) e [`RaccomandazionePerDurata`](src/funzionale/poliflix/contenuti/strategy/RaccomandazionePerDurata.java):
+    - Raccomandazioni in [`RaccomandazionePerTitolo`](src/main/funzionale/poliflix/contenuti/strategy/RaccomandazionePerTitolo.java) e [`RaccomandazionePerDurata`](src/main/funzionale/poliflix/contenuti/strategy/RaccomandazionePerDurata.java):
       - Pipeline con `stream()` + `filter` + `limit` + `toList()` per produrre i suggerimenti.
-    - Avvio riproduzione con method reference in `ManagerContenuti.riproduci(String titolo)` ([file](src/funzionale/poliflix/contenuti/ManagerContenuti.java)):
+    - Avvio riproduzione con method reference in `ManagerContenuti.riproduci(String titolo)` ([file](src/main/funzionale/poliflix/contenuti/ManagerContenuti.java)):
       - Creazione del `Runnable` via `contenutoDaRiprodurre::riproduci` (referenza a metodo) prima dell’avvio del thread.
-    - Verifica utente esistente in `ManagerUtenti.utenteEsiste(Utente)` ([file](src/funzionale/poliflix/utenti/ManagerUtenti.java)):
+    - Verifica utente esistente in `ManagerUtenti.utenteEsiste(Utente)` ([file](src/main/funzionale/poliflix/utenti/ManagerUtenti.java)):
       - `stream()` → `filter` → `findFirst()` → `isPresent()` per controllare le credenziali senza cicli e flag mutabili.
 
 - Risorse d’esempio:
