@@ -1,22 +1,24 @@
 package funzionale.poliflix.contenuti;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-public class FilmTest {
-    Film f;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
-    @Before
-    public void setUp() throws Exception {
+public class FilmTest {
+    static Film f;
+
+    @BeforeAll
+    public static void setUp() throws Exception {
         f = new Film("titolo_test", 5, "genere_test", Arrays.asList("attore 1", "attore 2"));
     }
 
     @Test
     public void getGenere_test() {
-        Assert.assertEquals("genere_test", f.getGenere());
+        assertEquals("genere_test", f.getGenere());
     }
 
     @Test
@@ -25,7 +27,7 @@ public class FilmTest {
 
         Film parsato = Film.parsaRiga(riga);
 
-        Assert.assertEquals("Inception", parsato.getTitolo());
+        assertEquals("Inception", parsato.getTitolo());
     }
 
     @Test
@@ -33,7 +35,7 @@ public class FilmTest {
         try {
             f.riproduci();
         } catch (AssertionError e) {
-            Assert.fail("Riproduzione non riuscita.");
+            fail("Riproduzione non riuscita.");
         }
     }
 }

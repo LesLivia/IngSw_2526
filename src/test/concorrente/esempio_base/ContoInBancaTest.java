@@ -1,14 +1,15 @@
 package concorrente.esempio_base;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ContoInBancaTest {
-    ContoInBanca conto;
+    static ContoInBanca conto;
 
-    @Before
-    public void setUp() {
+    @BeforeAll
+    public static void setUp() {
         conto = new ContoInBanca(1000);
     }
 
@@ -27,7 +28,7 @@ public class ContoInBancaTest {
             throw new RuntimeException(e);
         }
 
-        Assert.assertEquals(1000, conto.getSaldo());
+        assertEquals(1000, conto.getSaldo());
     }
 
 }

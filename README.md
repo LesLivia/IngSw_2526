@@ -228,7 +228,7 @@ Di seguito, la descrizione, package per package, degli argomenti trattati:
 <details>
 <summary><strong>8) Package: unit_testing</strong></summary>
 
-- Obiettivo: introdurre i fondamenti del testing automatico con JUnit (esempi con JUnit 4): struttura di un test, principali asserzioni, test di eccezioni e copertura dei casi limite. 
+- Obiettivo: introdurre i fondamenti del testing automatico con JUnit (esempi con JUnit 5): struttura di un test, principali asserzioni, test di eccezioni e copertura dei casi limite. 
 
   8.1) Sottopacchetto: unit_testing
   - File principali:
@@ -236,8 +236,8 @@ Di seguito, la descrizione, package per package, degli argomenti trattati:
     - [test.unit_testing.EsempiBaseTest](src/test/unit_testing/EsempiBaseTest.java)
   - Cosa mostra:
     - Struttura dei metodi di test
-    - Asserzioni base con `Assert.assertEquals` per confronti di valori
-    - Verifica di eccezioni attese con `Assert.assertThrows` (es. array vuoto in `max_square`)
+    - Asserzioni base con `assertEquals` per confronti di valori
+    - Verifica di eccezioni attese con `assertThrows` (es. array vuoto in `max_square`)
     - Copertura di casi nominali, permutazioni di input ed edge cases (dimensioni parziali, valori negativi, condizioni di stop)
     - Esempio di “fallimento” di un test per evidenziare un difetto nella logica di `EsempiBase.max` (vedi commento nel metodo di test `test_max`)
 

@@ -2,17 +2,18 @@ package funzionale.poliflix.contenuti;
 
 import funzionale.poliflix.contenuti.factory.ContenutiFactory;
 import funzionale.poliflix.utils.PoliFlixException;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-public class ManagerContenutiTest {
-    ManagerContenuti mc;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-    @Before
-    public void setUp() {
+public class ManagerContenutiTest {
+    static ManagerContenuti mc;
+
+    @BeforeAll
+    public static void setUp() {
         mc = ManagerContenuti.getInstance();
         try {
             List<ContenutoMultimediale> contenuti = ContenutiFactory.leggiDaCsv("./test_resources/files/test_contenuti.csv");
@@ -24,7 +25,7 @@ public class ManagerContenutiTest {
 
     @Test
     public void getContenuti_test() {
-        Assert.assertTrue(mc.getContenuti().size() == 3);
+        assertTrue(mc.getContenuti().size() == 3);
     }
 
     @Test
