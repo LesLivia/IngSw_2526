@@ -223,3 +223,42 @@ Di seguito, la descrizione, package per package, degli argomenti trattati:
   - Diagrammi: [resources/diagrams/PoliFlix_7.png](resources/diagrams/PoliFlix_7.png)
 
 </details>
+
+
+<details>
+<summary><strong>8) Package: unit_testing</strong></summary>
+
+- Obiettivo: introdurre i fondamenti del testing automatico con JUnit (esempi con JUnit 4): struttura di un test, principali asserzioni, test di eccezioni e copertura dei casi limite. 
+
+  8.1) Sottopacchetto: unit_testing
+  - File principali:
+    - [main.unit_testing.EsempiBase](src/main/unit_testing/EsempiBase.java)
+    - [test.unit_testing.EsempiBaseTest](src/test/unit_testing/EsempiBaseTest.java)
+  - Cosa mostra:
+    - Struttura dei metodi di test
+    - Asserzioni base con `Assert.assertEquals` per confronti di valori
+    - Verifica di eccezioni attese con `Assert.assertThrows` (es. array vuoto in `max_square`)
+    - Copertura di casi nominali, permutazioni di input ed edge cases (dimensioni parziali, valori negativi, condizioni di stop)
+    - Esempio di “fallimento” di un test per evidenziare un difetto nella logica di `EsempiBase.max` (vedi commento nel metodo di test `test_max`)
+
+  8.2) Sottopacchetto: funzionale.poliflix.contenuti
+  - File principali:
+    - [test.funzionale.poliflix.contenuti.FilmTest](src/test/funzionale/poliflix/contenuti/FilmTest.java)
+    - [test.funzionale.poliflix.contenuti.ManagerContenutiTest](src/test/funzionale/poliflix/contenuti/ManagerContenutiTest.java)
+  - Cosa mostra:
+    - Iniezione dei contenuti nel singleton `ManagerContenuti` via `setContenuti` e verifica della dimensione della libreria
+    - Lettura dati di test da CSV tramite `ContenutiFactory.leggiDaCsv(...)` usando un file in `test_resources`
+    - Verifica del parsing di una riga CSV in `Film.parsaRiga`
+    - Esecuzione di `riproduci()` su un `Film` in un contesto testabile (senza input utente)
+  - Risorse d’esempio:
+    - [test_resources/files/test_contenuti.csv](test_resources/files/test_contenuti.csv)
+
+  8.3) Sottopacchetto: concorrente.esempio_base
+  - File principali:
+    - [test.concorrente.esempio_base.ContoInBancaTest](src/test/concorrente/esempio_base/ContoInBancaTest.java)
+  - Cosa mostra:
+    - Avvio di thread concorrenti (`ThreadDeposita`, `ThreadPreleva`) e sincronizzazione tramite `join()`
+    - Verifica di un invariante su risorsa condivisa (`saldo` del `ContoInBanca`) al termine dell’esecuzione concorrente
+    - Esempio pratico di test di correttezza in presenza di concorrenza
+
+</details>
