@@ -1,11 +1,20 @@
 package unit_testing;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import java.util.Arrays;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class EsempiBaseTest {
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 9})
+    public void test_parameterized(int x) {
+        assertTrue(x > 0);
+    }
 
     @Test
     public void test_max() {
@@ -58,4 +67,13 @@ public class EsempiBaseTest {
         assertEquals(9, EsempiBase.max_square(new int[]{1, 3, 2}));
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"1, 2, 3", "4, 5, 6", "7, 8, 9"})
+    public void test_max_square_parametrized(String a) {
+        String[] str_test_case = a.split(", ");
+        int[] test_case = Arrays.stream(str_test_case)
+                .mapToInt(Integer::parseInt)
+                .toArray();
+        assertTrue(EsempiBase.max_square(test_case) > 0);
+    }
 }

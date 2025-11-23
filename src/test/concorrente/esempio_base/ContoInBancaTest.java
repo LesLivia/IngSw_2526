@@ -1,7 +1,7 @@
 package concorrente.esempio_base;
 
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.RepeatedTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -13,7 +13,7 @@ public class ContoInBancaTest {
         conto = new ContoInBanca(1000);
     }
 
-    @Test
+    @RepeatedTest(1000)
     public void deposita_test() {
         ThreadDeposita t1 = new ThreadDeposita(conto);
         ThreadPreleva t2 = new ThreadPreleva(conto);
