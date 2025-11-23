@@ -228,7 +228,7 @@ Di seguito, la descrizione, package per package, degli argomenti trattati:
 <details>
 <summary><strong>8) Package: unit_testing</strong></summary>
 
-- Obiettivo: introdurre i fondamenti del testing automatico con JUnit (esempi con JUnit 5): struttura di un test, principali asserzioni, test di eccezioni e copertura dei casi limite. 
+- Obiettivo: introdurre i fondamenti del testing automatico con JUnit (esempi con JUnit 5): struttura di un test, principali asserzioni, test di eccezioni e copertura dei casi limite; esempi di annotazioni JUnit 5 come `@ParameterizedTest` e `@RepeatedTest`. 
 
   8.1) Sottopacchetto: unit_testing
   - File principali:
@@ -239,6 +239,7 @@ Di seguito, la descrizione, package per package, degli argomenti trattati:
     - Asserzioni base con `assertEquals` per confronti di valori
     - Verifica di eccezioni attese con `assertThrows` (es. array vuoto in `max_square`)
     - Copertura di casi nominali, permutazioni di input ed edge cases (dimensioni parziali, valori negativi, condizioni di stop)
+    - Esempi di test parametrizzati con `@ParameterizedTest` e `@ValueSource` (es. `test_parameterized`, `test_max_square_parametrized`)
     - Esempio di “fallimento” di un test per evidenziare un difetto nella logica di `EsempiBase.max` (vedi commento nel metodo di test `test_max`)
 
   8.2) Sottopacchetto: funzionale.poliflix.contenuti
@@ -259,6 +260,19 @@ Di seguito, la descrizione, package per package, degli argomenti trattati:
   - Cosa mostra:
     - Avvio di thread concorrenti (`ThreadDeposita`, `ThreadPreleva`) e sincronizzazione tramite `join()`
     - Verifica di un invariante su risorsa condivisa (`saldo` del `ContoInBanca`) al termine dell’esecuzione concorrente
+    - Uso di `@RepeatedTest` per eseguire il test più volte e aumentare l’affidabilità in presenza di condizioni non deterministiche (es. `@RepeatedTest(1000)`) 
     - Esempio pratico di test di correttezza in presenza di concorrenza
+
+  8.4) Sottopacchetto: unit_testing.notification_system
+  - File principali:
+    - [test.unit_testing.notification_system.NotificationTest](src/test/unit_testing/notification_system/NotificationTest.java)
+    - [main.unit_testing.notification_system.GenericNotification](src/main/unit_testing/notification_system/GenericNotification.java), [main.unit_testing.notification_system.EmailNotification](src/main/unit_testing/notification_system/EmailNotification.java), [main.unit_testing.notification_system.SmsNotification](src/main/unit_testing/notification_system/SmsNotification.java), [main.unit_testing.notification_system.CriticalSystemAlert](src/main/unit_testing/notification_system/CriticalSystemAlert.java)
+  - Cosa mostra:
+    - Polimorfismo: lista di `GenericNotification` con istanze eterogenee e dispatch dinamico su `formatMessage(...)`
+    - Composizione: `CriticalSystemAlert` che “wrappa” un’altra notifica per arricchirne il comportamento
+    - Validazioni con eccezioni: `send(...)` che lancia `IllegalArgumentException` in casi non ammessi
+    - Overload di metodi e formattazione messaggi con parametri opzionali
+  - Risorse d’esempio:
+    - Diagramma: [resources/diagrams/notification_system.png](resources/diagrams/notification_system.png)
 
 </details>
