@@ -276,3 +276,22 @@ Di seguito, la descrizione, package per package, degli argomenti trattati:
     - Diagramma: [resources/diagrams/notification_system.png](resources/diagrams/notification_system.png)
 
 </details>
+
+
+<details>
+<summary><strong>9) Package: specifica</strong></summary>
+
+- Obiettivo: esempi di specifica formale con JML e uso di OpenJML per analisi statica (ESC).
+
+  9.1) Sottopacchetto: specifica.esempi_base
+    - File principale:
+        - [specifica.esempi_base.EsempiBase](src/main/specifica/esempi_base/EsempiBase.java)
+
+    - Mini‑guida OpenJML (setup rapido):
+        - Prerequisiti: JDK compatibile (consigliato JDK 17) installato e disponibile nel PATH.
+        - Scarica la release per il tuo sistema operativo: https://www.openjml.org
+
+    - Esempio di Utilizzo (con l'eseguibile openjml all'interno del folder resources):
+        - `openjml -esc ../../src/main/specifica/esempi_base/EsempiBase.java`
+
+</details>

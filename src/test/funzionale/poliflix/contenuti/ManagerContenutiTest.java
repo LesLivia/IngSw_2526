@@ -36,7 +36,7 @@ public class ManagerContenutiTest {
             // messi tutti a fattor comune in una classe (o un package)
             // che è l'unico a non essere oggetto di test.
             // mc.riproduci("inception");
-            mc.riproduci("test");
+            mc.riproduci("Inception");
         } catch (PoliFlixException e) {
             throw new RuntimeException(e);
         }
